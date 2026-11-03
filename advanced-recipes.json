@@ -1,0 +1,1690 @@
+[
+  {
+    "name": "Battery",
+    "inputs": [
+      "electricity",
+      "metal",
+      "energy"
+    ]
+  },
+  {
+    "name": "Telephone",
+    "inputs": [
+      "sound",
+      "wire",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Factory",
+    "inputs": [
+      "house",
+      "metal",
+      "tool"
+    ]
+  },
+  {
+    "name": "Camera",
+    "inputs": [
+      "glass",
+      "light",
+      "tool"
+    ]
+  },
+  {
+    "name": "Antenna",
+    "inputs": [
+      "metal",
+      "wire",
+      "sky"
+    ]
+  },
+  {
+    "name": "Plastic",
+    "inputs": [
+      "oil",
+      "fire",
+      "pressure"
+    ]
+  },
+  {
+    "name": "Magnet",
+    "inputs": [
+      "metal",
+      "electricity",
+      "stone"
+    ]
+  },
+  {
+    "name": "Sensor",
+    "inputs": [
+      "electricity",
+      "light",
+      "wire"
+    ]
+  },
+  {
+    "name": "Coffee",
+    "inputs": [
+      "plant",
+      "water",
+      "fire"
+    ]
+  },
+  {
+    "name": "Filter",
+    "inputs": [
+      "sand",
+      "glass",
+      "water"
+    ]
+  },
+  {
+    "name": "Hydrogen",
+    "inputs": [
+      "water",
+      "electricity",
+      "air"
+    ]
+  },
+  {
+    "name": "Road",
+    "inputs": [
+      "stone",
+      "sand",
+      "city"
+    ]
+  },
+  {
+    "name": "Thermometer",
+    "inputs": [
+      "glass",
+      "mercury",
+      "heat"
+    ]
+  },
+  {
+    "name": "Asteroid",
+    "inputs": [
+      "space",
+      "stone",
+      "planet"
+    ]
+  },
+  {
+    "name": "Portal",
+    "inputs": [
+      "space",
+      "energy",
+      "light"
+    ]
+  },
+  {
+    "name": "Seed",
+    "inputs": [
+      "plant",
+      "earth",
+      "life"
+    ]
+  },
+  {
+    "name": "DNA",
+    "inputs": [
+      "life",
+      "human",
+      "microscope"
+    ]
+  },
+  {
+    "name": "Heart",
+    "inputs": [
+      "human",
+      "life",
+      "blood"
+    ]
+  },
+  {
+    "name": "Medicine",
+    "inputs": [
+      "doctor",
+      "plant",
+      "science"
+    ]
+  },
+  {
+    "name": "Food",
+    "inputs": [
+      "plant",
+      "meat",
+      "water"
+    ]
+  },
+  {
+    "name": "Package",
+    "inputs": [
+      "paper",
+      "box",
+      "rope"
+    ]
+  },
+  {
+    "name": "Force Field",
+    "inputs": [
+      "energy",
+      "light",
+      "glass"
+    ]
+  },
+  {
+    "name": "Plasma",
+    "inputs": [
+      "fire",
+      "electricity",
+      "gas"
+    ]
+  },
+  {
+    "name": "Magic",
+    "inputs": [
+      "energy",
+      "wizard",
+      "light"
+    ]
+  },
+  {
+    "name": "Game",
+    "inputs": [
+      "human",
+      "fun",
+      "idea"
+    ]
+  },
+  {
+    "name": "Art",
+    "inputs": [
+      "human",
+      "paint",
+      "idea"
+    ]
+  },
+  {
+    "name": "Museum",
+    "inputs": [
+      "art",
+      "house",
+      "history"
+    ]
+  },
+  {
+    "name": "Guitar",
+    "inputs": [
+      "wood",
+      "music",
+      "wire"
+    ]
+  },
+  {
+    "name": "Microphone",
+    "inputs": [
+      "sound",
+      "metal",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Film",
+    "inputs": [
+      "light",
+      "paper",
+      "camera"
+    ]
+  },
+  {
+    "name": "Balloon",
+    "inputs": [
+      "air",
+      "fabric",
+      "pressure"
+    ]
+  },
+  {
+    "name": "Ledger",
+    "inputs": [
+      "paper",
+      "money",
+      "book"
+    ]
+  },
+  {
+    "name": "Law",
+    "inputs": [
+      "human",
+      "paper",
+      "city"
+    ]
+  },
+  {
+    "name": "Market",
+    "inputs": [
+      "money",
+      "city",
+      "human"
+    ]
+  },
+  {
+    "name": "Eye",
+    "inputs": [
+      "human",
+      "light",
+      "life"
+    ]
+  },
+  {
+    "name": "Sleep",
+    "inputs": [
+      "night",
+      "human",
+      "time"
+    ]
+  },
+  {
+    "name": "Brain",
+    "inputs": [
+      "human",
+      "idea",
+      "life"
+    ]
+  },
+  {
+    "name": "Mercury",
+    "inputs": [
+      "metal",
+      "water",
+      "pressure"
+    ]
+  },
+  {
+    "name": "Heat",
+    "inputs": [
+      "fire",
+      "energy",
+      "air"
+    ]
+  },
+  {
+    "name": "Science",
+    "inputs": [
+      "idea",
+      "human",
+      "book"
+    ]
+  },
+  {
+    "name": "Box",
+    "inputs": [
+      "wood",
+      "paper",
+      "tool"
+    ]
+  },
+  {
+    "name": "Gas",
+    "inputs": [
+      "air",
+      "fire",
+      "pressure"
+    ]
+  },
+  {
+    "name": "Fun",
+    "inputs": [
+      "human",
+      "music",
+      "love"
+    ]
+  },
+  {
+    "name": "History",
+    "inputs": [
+      "time",
+      "book",
+      "human"
+    ]
+  },
+  {
+    "name": "Computer",
+    "inputs": [
+      "CPU",
+      "electricity",
+      "Monitor Screen"
+    ]
+  },
+  {
+    "name": "Gaming PC",
+    "inputs": [
+      "computer",
+      "electricity",
+      "metal"
+    ]
+  },
+  {
+    "name": "Laptop",
+    "inputs": [
+      "computer",
+      "battery",
+      "glass"
+    ]
+  },
+  {
+    "name": "Tablet",
+    "inputs": [
+      "computer",
+      "glass",
+      "light"
+    ]
+  },
+  {
+    "name": "Smartphone",
+    "inputs": [
+      "computer",
+      "telephone",
+      "glass"
+    ]
+  },
+  {
+    "name": "Smartwatch",
+    "inputs": [
+      "watch",
+      "computer",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Server Rack",
+    "inputs": [
+      "computer",
+      "metal",
+      "wire"
+    ]
+  },
+  {
+    "name": "Data Center",
+    "inputs": [
+      "computer",
+      "house",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Cloud Server",
+    "inputs": [
+      "computer",
+      "cloud",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Supercomputer",
+    "inputs": [
+      "computer",
+      "computer",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Quantum Computer",
+    "inputs": [
+      "computer",
+      "energy",
+      "crystal ball"
+    ]
+  },
+  {
+    "name": "Artificial Intelligence",
+    "inputs": [
+      "computer",
+      "human",
+      "idea"
+    ]
+  },
+  {
+    "name": "Neural Network",
+    "inputs": [
+      "computer",
+      "brain",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Robot Assistant",
+    "inputs": [
+      "robot",
+      "computer",
+      "human"
+    ]
+  },
+  {
+    "name": "Industrial Robot",
+    "inputs": [
+      "robot",
+      "metal",
+      "factory"
+    ]
+  },
+  {
+    "name": "Humanoid Robot",
+    "inputs": [
+      "robot",
+      "human",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Drone Camera",
+    "inputs": [
+      "drone",
+      "camera",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Security Camera",
+    "inputs": [
+      "camera",
+      "electricity",
+      "glass"
+    ]
+  },
+  {
+    "name": "Smart Home",
+    "inputs": [
+      "house",
+      "computer",
+      "sensor"
+    ]
+  },
+  {
+    "name": "Smart City",
+    "inputs": [
+      "city",
+      "computer",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Internet Router",
+    "inputs": [
+      "internet",
+      "wire",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Wi-Fi Tower",
+    "inputs": [
+      "internet",
+      "antenna",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Satellite",
+    "inputs": [
+      "space",
+      "metal",
+      "computer"
+    ]
+  },
+  {
+    "name": "GPS Navigator",
+    "inputs": [
+      "satellite",
+      "map",
+      "computer"
+    ]
+  },
+  {
+    "name": "Hologram",
+    "inputs": [
+      "light",
+      "computer",
+      "optical fiber"
+    ]
+  },
+  {
+    "name": "Virtual Reality",
+    "inputs": [
+      "computer",
+      "glasses",
+      "light"
+    ]
+  },
+  {
+    "name": "Augmented Reality",
+    "inputs": [
+      "glasses",
+      "computer",
+      "camera"
+    ]
+  },
+  {
+    "name": "3D Printer",
+    "inputs": [
+      "printer",
+      "plastic",
+      "computer"
+    ]
+  },
+  {
+    "name": "Laser Cutter",
+    "inputs": [
+      "light",
+      "metal",
+      "tool"
+    ]
+  },
+  {
+    "name": "Microchip",
+    "inputs": [
+      "electricity",
+      "metal",
+      "sand"
+    ]
+  },
+  {
+    "name": "CPU",
+    "inputs": [
+      "microchip",
+      "electricity",
+      "computer"
+    ]
+  },
+  {
+    "name": "Graphics Card",
+    "inputs": [
+      "microchip",
+      "light",
+      "computer"
+    ]
+  },
+  {
+    "name": "Monitor Screen",
+    "inputs": [
+      "glass",
+      "light",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Circuit Board",
+    "inputs": [
+      "wire",
+      "metal",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Battery Pack",
+    "inputs": [
+      "electricity",
+      "metal",
+      "acid rain"
+    ]
+  },
+  {
+    "name": "Power Bank",
+    "inputs": [
+      "battery pack",
+      "computer",
+      "wire"
+    ]
+  },
+  {
+    "name": "Solar Charger",
+    "inputs": [
+      "solar cell",
+      "battery pack",
+      "sun"
+    ]
+  },
+  {
+    "name": "Electric Scooter",
+    "inputs": [
+      "electricity",
+      "wheel",
+      "metal"
+    ]
+  },
+  {
+    "name": "Electric Bicycle",
+    "inputs": [
+      "bicycle",
+      "battery pack",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Electric Train",
+    "inputs": [
+      "train",
+      "electricity",
+      "metal"
+    ]
+  },
+  {
+    "name": "Maglev Train",
+    "inputs": [
+      "train",
+      "magnet",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Self-driving Car",
+    "inputs": [
+      "car",
+      "computer",
+      "sensor"
+    ]
+  },
+  {
+    "name": "Electric Truck",
+    "inputs": [
+      "car",
+      "metal",
+      "battery pack"
+    ]
+  },
+  {
+    "name": "Robot Vacuum",
+    "inputs": [
+      "roomba",
+      "computer",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Smart Refrigerator",
+    "inputs": [
+      "fridge",
+      "computer",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Smart Oven",
+    "inputs": [
+      "fire",
+      "computer",
+      "metal"
+    ]
+  },
+  {
+    "name": "Coffee Machine",
+    "inputs": [
+      "water",
+      "electricity",
+      "coffee"
+    ]
+  },
+  {
+    "name": "Water Purifier",
+    "inputs": [
+      "water",
+      "filter",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Air Purifier",
+    "inputs": [
+      "wind",
+      "filter",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Air Conditioner",
+    "inputs": [
+      "cold",
+      "wind",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Industrial Generator",
+    "inputs": [
+      "electricity",
+      "steam engine",
+      "metal"
+    ]
+  },
+  {
+    "name": "Wind Farm",
+    "inputs": [
+      "wind turbine",
+      "electricity",
+      "field"
+    ]
+  },
+  {
+    "name": "Solar Farm",
+    "inputs": [
+      "solar cell",
+      "sun",
+      "field"
+    ]
+  },
+  {
+    "name": "Hydroelectric Dam",
+    "inputs": [
+      "dam",
+      "water",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Geothermal Plant",
+    "inputs": [
+      "geyser",
+      "steam",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Nuclear Reactor",
+    "inputs": [
+      "atomic bomb",
+      "metal",
+      "water"
+    ]
+  },
+  {
+    "name": "Fusion Reactor",
+    "inputs": [
+      "sun",
+      "hydrogen",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Energy Grid",
+    "inputs": [
+      "electricity",
+      "city",
+      "wire"
+    ]
+  },
+  {
+    "name": "Charging Station",
+    "inputs": [
+      "electricity",
+      "road",
+      "battery pack"
+    ]
+  },
+  {
+    "name": "Smart Grid",
+    "inputs": [
+      "energy grid",
+      "computer",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Weather Station",
+    "inputs": [
+      "storm",
+      "computer",
+      "antenna"
+    ]
+  },
+  {
+    "name": "Climate Sensor",
+    "inputs": [
+      "weather station",
+      "thermometer",
+      "computer"
+    ]
+  },
+  {
+    "name": "Space Telescope",
+    "inputs": [
+      "telescope",
+      "space",
+      "computer"
+    ]
+  },
+  {
+    "name": "Mars Rover",
+    "inputs": [
+      "robot",
+      "mars",
+      "wheel"
+    ]
+  },
+  {
+    "name": "Space Probe",
+    "inputs": [
+      "spaceship",
+      "computer",
+      "satellite"
+    ]
+  },
+  {
+    "name": "Orbital Station",
+    "inputs": [
+      "space station",
+      "solar cell",
+      "robot"
+    ]
+  },
+  {
+    "name": "Moon Base",
+    "inputs": [
+      "moon",
+      "house",
+      "space station"
+    ]
+  },
+  {
+    "name": "Lunar Rover",
+    "inputs": [
+      "moon",
+      "car",
+      "computer"
+    ]
+  },
+  {
+    "name": "Asteroid Miner",
+    "inputs": [
+      "asteroid",
+      "robot",
+      "metal"
+    ]
+  },
+  {
+    "name": "Starship",
+    "inputs": [
+      "spaceship",
+      "engineer",
+      "metal"
+    ]
+  },
+  {
+    "name": "Warp Drive",
+    "inputs": [
+      "space",
+      "energy",
+      "engine"
+    ]
+  },
+  {
+    "name": "Teleportation Gate",
+    "inputs": [
+      "portal",
+      "energy",
+      "computer"
+    ]
+  },
+  {
+    "name": "Time Machine",
+    "inputs": [
+      "time",
+      "clock",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Cryogenic Chamber",
+    "inputs": [
+      "ice",
+      "human",
+      "metal"
+    ]
+  },
+  {
+    "name": "Terraforming Machine",
+    "inputs": [
+      "planet",
+      "plant",
+      "computer"
+    ]
+  },
+  {
+    "name": "Biosphere Dome",
+    "inputs": [
+      "plant",
+      "glass",
+      "house"
+    ]
+  },
+  {
+    "name": "Vertical Farm",
+    "inputs": [
+      "farm",
+      "skyscraper",
+      "water"
+    ]
+  },
+  {
+    "name": "Hydroponic Garden",
+    "inputs": [
+      "plant",
+      "water",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Aquaponics System",
+    "inputs": [
+      "fish",
+      "plant",
+      "water"
+    ]
+  },
+  {
+    "name": "Automated Greenhouse",
+    "inputs": [
+      "greenhouse",
+      "robot",
+      "water"
+    ]
+  },
+  {
+    "name": "Seed Bank",
+    "inputs": [
+      "seed",
+      "ice",
+      "bank"
+    ]
+  },
+  {
+    "name": "Gene Sequencer",
+    "inputs": [
+      "DNA",
+      "computer",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Bioreactor",
+    "inputs": [
+      "bacteria",
+      "metal",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Synthetic Organ",
+    "inputs": [
+      "heart",
+      "robot",
+      "life"
+    ]
+  },
+  {
+    "name": "Prosthetic Arm",
+    "inputs": [
+      "robot",
+      "human",
+      "metal"
+    ]
+  },
+  {
+    "name": "Exoskeleton",
+    "inputs": [
+      "armor",
+      "robot",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Medical Scanner",
+    "inputs": [
+      "doctor",
+      "computer",
+      "light"
+    ]
+  },
+  {
+    "name": "MRI Machine",
+    "inputs": [
+      "hospital",
+      "electricity",
+      "magnet"
+    ]
+  },
+  {
+    "name": "Nanobot",
+    "inputs": [
+      "robot",
+      "metal",
+      "bacteria"
+    ]
+  },
+  {
+    "name": "Nanofactory",
+    "inputs": [
+      "nanobot",
+      "factory",
+      "computer"
+    ]
+  },
+  {
+    "name": "Cure Machine",
+    "inputs": [
+      "medicine",
+      "electricity",
+      "doctor"
+    ]
+  },
+  {
+    "name": "Food Printer",
+    "inputs": [
+      "3d printer",
+      "food",
+      "water"
+    ]
+  },
+  {
+    "name": "Automatic Bakery",
+    "inputs": [
+      "bakery",
+      "robot",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Drone Delivery",
+    "inputs": [
+      "drone",
+      "package",
+      "city"
+    ]
+  },
+  {
+    "name": "Autonomous Ship",
+    "inputs": [
+      "boat",
+      "computer",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Submarine",
+    "inputs": [
+      "boat",
+      "metal",
+      "pressure"
+    ]
+  },
+  {
+    "name": "Deep Sea Lab",
+    "inputs": [
+      "ocean",
+      "house",
+      "computer"
+    ]
+  },
+  {
+    "name": "Ocean Cleanup Drone",
+    "inputs": [
+      "ocean",
+      "robot",
+      "plastic"
+    ]
+  },
+  {
+    "name": "Desalination Plant",
+    "inputs": [
+      "sea",
+      "fire",
+      "metal"
+    ]
+  },
+  {
+    "name": "Underwater City",
+    "inputs": [
+      "city",
+      "ocean",
+      "glass"
+    ]
+  },
+  {
+    "name": "Floating City",
+    "inputs": [
+      "city",
+      "boat",
+      "metal"
+    ]
+  },
+  {
+    "name": "Sky City",
+    "inputs": [
+      "city",
+      "cloud",
+      "metal"
+    ]
+  },
+  {
+    "name": "Space Elevator",
+    "inputs": [
+      "space",
+      "metal",
+      "rope"
+    ]
+  },
+  {
+    "name": "Orbital Ring",
+    "inputs": [
+      "space",
+      "ring",
+      "metal"
+    ]
+  },
+  {
+    "name": "Meteor Shield",
+    "inputs": [
+      "force field",
+      "planet",
+      "metal"
+    ]
+  },
+  {
+    "name": "Defense Drone",
+    "inputs": [
+      "drone",
+      "robot",
+      "metal"
+    ]
+  },
+  {
+    "name": "Energy Shield",
+    "inputs": [
+      "energy",
+      "glass",
+      "armor"
+    ]
+  },
+  {
+    "name": "Plasma Cannon",
+    "inputs": [
+      "plasma",
+      "metal",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Photon Blade",
+    "inputs": [
+      "light",
+      "sword",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Lightning Staff",
+    "inputs": [
+      "wand",
+      "electricity",
+      "metal"
+    ]
+  },
+  {
+    "name": "Arcane Reactor",
+    "inputs": [
+      "magic",
+      "electricity",
+      "metal"
+    ]
+  },
+  {
+    "name": "Mana Battery",
+    "inputs": [
+      "magic",
+      "energy",
+      "crystal ball"
+    ]
+  },
+  {
+    "name": "Spellbook",
+    "inputs": [
+      "book",
+      "magic",
+      "paper"
+    ]
+  },
+  {
+    "name": "Enchanted Armor",
+    "inputs": [
+      "armor",
+      "magic",
+      "metal"
+    ]
+  },
+  {
+    "name": "Flying Carpet",
+    "inputs": [
+      "fabric",
+      "magic",
+      "wind"
+    ]
+  },
+  {
+    "name": "Portal Engine",
+    "inputs": [
+      "magic",
+      "space",
+      "computer"
+    ]
+  },
+  {
+    "name": "Crystal Forge",
+    "inputs": [
+      "crystal ball",
+      "fire",
+      "metal"
+    ]
+  },
+  {
+    "name": "Elemental Golem",
+    "inputs": [
+      "golem",
+      "energy",
+      "stone"
+    ]
+  },
+  {
+    "name": "Clockwork Golem",
+    "inputs": [
+      "golem",
+      "clock",
+      "metal"
+    ]
+  },
+  {
+    "name": "Storm Engine",
+    "inputs": [
+      "storm",
+      "electricity",
+      "metal"
+    ]
+  },
+  {
+    "name": "Volcano Drill",
+    "inputs": [
+      "volcano",
+      "tool",
+      "metal"
+    ]
+  },
+  {
+    "name": "Lava Turbine",
+    "inputs": [
+      "lava",
+      "metal",
+      "wheel"
+    ]
+  },
+  {
+    "name": "Earthquake Detector",
+    "inputs": [
+      "earthquake",
+      "computer",
+      "sensor"
+    ]
+  },
+  {
+    "name": "Tsunami Warning System",
+    "inputs": [
+      "tsunami",
+      "weather station",
+      "computer"
+    ]
+  },
+  {
+    "name": "Volcanic Observatory",
+    "inputs": [
+      "volcano",
+      "telescope",
+      "computer"
+    ]
+  },
+  {
+    "name": "Aurora Generator",
+    "inputs": [
+      "aurora",
+      "electricity",
+      "glass"
+    ]
+  },
+  {
+    "name": "Light Sculpture",
+    "inputs": [
+      "light",
+      "glass",
+      "statue"
+    ]
+  },
+  {
+    "name": "Digital Art",
+    "inputs": [
+      "computer",
+      "paint",
+      "light"
+    ]
+  },
+  {
+    "name": "Pixel Studio",
+    "inputs": [
+      "computer",
+      "paint",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Animation Studio",
+    "inputs": [
+      "computer",
+      "art",
+      "time"
+    ]
+  },
+  {
+    "name": "Game Console",
+    "inputs": [
+      "computer",
+      "game",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Arcade Machine",
+    "inputs": [
+      "game console",
+      "light",
+      "metal"
+    ]
+  },
+  {
+    "name": "VR Arcade",
+    "inputs": [
+      "virtual reality",
+      "game console",
+      "city"
+    ]
+  },
+  {
+    "name": "Digital Museum",
+    "inputs": [
+      "museum",
+      "computer",
+      "glass"
+    ]
+  },
+  {
+    "name": "Interactive Map",
+    "inputs": [
+      "map",
+      "computer",
+      "light"
+    ]
+  },
+  {
+    "name": "AI Companion",
+    "inputs": [
+      "artificial intelligence",
+      "robot assistant",
+      "love"
+    ]
+  },
+  {
+    "name": "Robot Orchestra",
+    "inputs": [
+      "robot",
+      "music",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Synthesizer",
+    "inputs": [
+      "music",
+      "electricity",
+      "computer"
+    ]
+  },
+  {
+    "name": "Electric Guitar",
+    "inputs": [
+      "guitar",
+      "electricity",
+      "metal"
+    ]
+  },
+  {
+    "name": "Music Streaming",
+    "inputs": [
+      "internet",
+      "music",
+      "computer"
+    ]
+  },
+  {
+    "name": "Podcast Studio",
+    "inputs": [
+      "microphone",
+      "computer",
+      "sound"
+    ]
+  },
+  {
+    "name": "Movie Projector",
+    "inputs": [
+      "light",
+      "film",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Cinema Dome",
+    "inputs": [
+      "glass",
+      "movie projector",
+      "house"
+    ]
+  },
+  {
+    "name": "Electric Airship",
+    "inputs": [
+      "balloon",
+      "electricity",
+      "metal"
+    ]
+  },
+  {
+    "name": "Weather Balloon",
+    "inputs": [
+      "air",
+      "balloon",
+      "sensor"
+    ]
+  },
+  {
+    "name": "Flying Taxi",
+    "inputs": [
+      "helicopter",
+      "computer",
+      "car"
+    ]
+  },
+  {
+    "name": "Hyperloop",
+    "inputs": [
+      "train",
+      "pressure",
+      "metal"
+    ]
+  },
+  {
+    "name": "Smart Factory",
+    "inputs": [
+      "factory",
+      "computer",
+      "robot"
+    ]
+  },
+  {
+    "name": "Automated Warehouse",
+    "inputs": [
+      "house",
+      "robot",
+      "computer"
+    ]
+  },
+  {
+    "name": "Factory Drone",
+    "inputs": [
+      "drone",
+      "factory",
+      "computer"
+    ]
+  },
+  {
+    "name": "Laser Printer",
+    "inputs": [
+      "printer",
+      "light",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Digital Currency",
+    "inputs": [
+      "money",
+      "internet",
+      "computer"
+    ]
+  },
+  {
+    "name": "Crypto Wallet",
+    "inputs": [
+      "money",
+      "computer",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Blockchain Node",
+    "inputs": [
+      "computer",
+      "internet",
+      "ledger"
+    ]
+  },
+  {
+    "name": "Mining Rig",
+    "inputs": [
+      "computer",
+      "electricity",
+      "diamond"
+    ]
+  },
+  {
+    "name": "Smart Contract",
+    "inputs": [
+      "computer",
+      "law",
+      "internet"
+    ]
+  },
+  {
+    "name": "Digital Marketplace",
+    "inputs": [
+      "market",
+      "internet",
+      "computer"
+    ]
+  },
+  {
+    "name": "Cybernetic Eye",
+    "inputs": [
+      "eye",
+      "robot",
+      "camera"
+    ]
+  },
+  {
+    "name": "Neural Interface",
+    "inputs": [
+      "brain",
+      "microchip",
+      "electricity"
+    ]
+  },
+  {
+    "name": "Mind Reader",
+    "inputs": [
+      "neural interface",
+      "sound",
+      "computer"
+    ]
+  },
+  {
+    "name": "Dream Recorder",
+    "inputs": [
+      "sleep",
+      "computer",
+      "camera"
+    ]
+  },
+  {
+    "name": "Memory Archive",
+    "inputs": [
+      "brain",
+      "computer",
+      "book"
+    ]
+  },
+  {
+    "name": "Digital Twin",
+    "inputs": [
+      "computer",
+      "human",
+      "mirror"
+    ]
+  },
+  {
+    "name": "Virtual World",
+    "inputs": [
+      "computer",
+      "planet",
+      "light"
+    ]
+  },
+  {
+    "name": "Simulation Engine",
+    "inputs": [
+      "computer",
+      "time",
+      "planet"
+    ]
+  },
+  {
+    "name": "Reality Editor",
+    "inputs": [
+      "simulation engine",
+      "magic",
+      "computer"
+    ]
+  },
+  {
+    "name": "Infinity Engine",
+    "inputs": [
+      "time",
+      "space",
+      "energy"
+    ]
+  }
+]

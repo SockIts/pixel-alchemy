@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0e1119" />
+<title>PIXEL / ALCHEMY — Element Lab</title>
+<style>
+/* Offline-ready: uses system sans-serif and monospace fonts. */
+:root {color-scheme:dark;--bg:#0c1017;--surface:#151b26;--surface2:#1b2331;--surface3:#222c3d;--stroke:#2d374b;--stroke-light:#354158;--text:#eef3fc;--muted:#8897ad;--accent:#a1e6d6;--gold:#efcb87;--green:#a2de9d;--danger:#e89492}
+*{box-sizing:border-box} html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:'DM Sans',Inter,system-ui,sans-serif}button,input{font:inherit}button{cursor:pointer}body{background-image:radial-gradient(ellipse at 72% -10%,#20283e88,transparent 40%),radial-gradient(ellipse at 5% 90%,#19302a55,transparent 45%)}
+.app{height:100dvh;min-height:740px;padding:0 23px 22px;max-width:1680px;margin:auto;display:flex;flex-direction:column}
+.topbar{height:83px;display:flex;align-items:center;gap:15px;flex-shrink:0}.mark{width:42px;height:42px;display:grid;place-items:center;border:1px solid #4e625d;background:#263831;color:var(--accent);box-shadow:inset 0 0 0 4px #16241f}.mark-grid{font-family:monospace;font-size:26px;font-weight:900;line-height:1}.branding strong{font-family:'Space Mono',monospace;font-size:16px;letter-spacing:-1.15px;display:block}.branding strong em{color:#8de3cb;font-style:normal}.branding small{font-size:10px;color:#79899e;text-transform:uppercase;letter-spacing:2.3px;font-weight:800}.head-divider{width:1px;height:32px;background:var(--stroke);margin:0 15px}.tagline{color:#8190a3;font-size:12px;letter-spacing:.1px}.head-spacer{flex:1}.progress-top{display:flex;gap:12px;align-items:center;font-family:'Space Mono',monospace;font-size:11px;color:#a3b1c4}.progress-top .fillbar{width:116px;height:5px;border-radius:10px;background:#283142;overflow:hidden}.progress-top .fillbar i{display:block;height:100%;background:linear-gradient(90deg,#78ccbd,#d5e8af);transition:width .4s}.header-btn{color:#a9b4c7;background:#18202c;border:1px solid var(--stroke);height:35px;padding:0 13px;border-radius:7px;font-size:12px;font-weight:700}.header-btn:hover{border-color:#718a93;color:#fff}.header-btn:focus-visible,.element-card:focus-visible,.catalog-card:focus-visible,.slot:focus-visible,.mix-btn:focus-visible{outline:2px solid #a1e6d6;outline-offset:2px}
+.workspace{min-height:0;flex:1 1 auto;height:auto;min-height:610px;display:grid;grid-template-columns:minmax(300px,345px) minmax(0,1fr);gap:17px}.panel{position:relative;min-height:0;background:linear-gradient(157deg,#18202c,#141a24 72%);border:1px solid var(--stroke);border-radius:13px;overflow:hidden;box-shadow:0 9px 25px #05070b24}.panel-header{display:flex;align-items:flex-start;justify-content:space-between;gap:13px}.eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:#83a49f;font-weight:700;text-transform:uppercase}.title{font-size:21px;letter-spacing:-.8px;line-height:1.12;margin:6px 0 0;font-weight:800}.small-note{color:#8897a8;font-size:11px}.meta-pill{display:inline-flex;align-items:center;justify-content:center;min-width:52px;height:27px;border-radius:6px;border:1px solid #354353;background:#212c3b;color:#b7c8dc;font-family:'Space Mono',monospace;font-size:11px}
+.ingredients{display:flex;flex-direction:column;padding:23px 16px 14px}.ingredients .panel-header{padding:0 6px}.search-box{display:flex;gap:9px;align-items:center;margin:22px 6px 12px;height:41px;border:1px solid #344052;border-radius:7px;color:#8190a3;padding:0 12px;background:#101720}.search-box svg{flex-shrink:0}.search-box input{min-width:0;width:100%;border:0;outline:0;background:none;color:#e6eef9;font-size:13px}.search-box input::placeholder{color:#728198}.filter-row{display:flex;gap:5px;margin:0 6px 14px}.filter-btn{background:transparent;color:#8493a8;border:1px solid transparent;border-radius:6px;padding:7px 11px;font-size:11px;font-weight:800}.filter-btn.active{background:#263646;border-color:#395362;color:#a9eade}.filter-btn:hover:not(.active){color:#d1dcea}.inventory{overflow-y:auto;min-height:0;padding:1px 5px 20px;scrollbar-width:thin;scrollbar-color:#354258 transparent;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;gap:11px}.element-card{border:1px solid #344154;border-radius:9px;background:#1e2735;min-width:0;height:151px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden;padding:9px 7px 11px;color:var(--text);position:relative;transition:transform .16s,border-color .16s,background .16s}.element-card:before{content:'';position:absolute;inset:0 0 40%;pointer-events:none;background:radial-gradient(ellipse at 50% 90%,var(--halo,#52647733),transparent 70%);opacity:.45}.element-card:hover{transform:translateY(-3px);border-color:#66897f;background:#243143}.element-card.selected{border-color:#91d7c6;box-shadow:inset 0 0 0 1px #91d7c655}.element-card.selected:after{content:'●';position:absolute;top:8px;right:9px;color:#8fddc9;font-size:10px}.element-card canvas{width:92px;height:92px;image-rendering:pixelated;position:relative;flex-shrink:0}.element-card .element-name{display:block;font-weight:800;font-size:13px;letter-spacing:-.1px}.element-card .element-type{display:block;font-size:9px;letter-spacing:1.5px;color:#8293a5;font-family:'Space Mono',monospace;text-transform:uppercase;margin-top:3px}.inventory-footer{flex-shrink:0;padding:13px 5px 0;border-top:1px solid #303b4c;margin-top:auto;display:flex;align-items:center;gap:9px;color:#8192a4;font-size:11px}.inventory-footer .dot{height:7px;width:7px;border-radius:50%;background:#96d5bf;box-shadow:0 0 10px #8bdabb88}.inventory-empty{grid-column:span 2;text-align:center;padding:45px 5px;color:#899aad;font-size:13px}
+.rightside{display:grid;grid-template-rows:minmax(354px,1.12fr) minmax(235px,.81fr);gap:17px;min-height:0}.lab{padding:23px 28px 21px;display:flex;flex-direction:column}.lab::before{content:'';position:absolute;pointer-events:none;inset:54px 0 68px;background-image:linear-gradient(#35435a22 1px,transparent 1px),linear-gradient(90deg,#35435a22 1px,transparent 1px);background-size:27px 27px;opacity:.6;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}.lab .panel-header{z-index:1;align-items:center}.lab .lab-right-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;color:#778b9f;display:flex;align-items:center;gap:7px}.lab .lab-right-label i{width:6px;height:6px;border-radius:50%;background:#8dcab6;box-shadow:0 0 9px #8dcab6}.craft-area{position:relative;flex:1;display:flex;align-items:center;justify-content:center;gap:21px;min-height:0;margin:10px 0 0}.slot{position:relative;z-index:1;width:min(29%,180px);min-width:142px;height:196px;flex-shrink:1;background:linear-gradient(180deg,#26314499,#1a2330a8);border:1px dashed #526176;border-radius:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;outline:none;color:var(--text);transition:background .15s,border-color .15s,transform .15s}.slot.has-element{border:1px solid #486072;background:linear-gradient(180deg,#243246dd,#1d2635cc)}.slot.dragover{border:2px solid #a1e6d6;transform:scale(1.03);background:#293c47}.slot .slot-id{position:absolute;top:12px;left:13px;font-family:'Space Mono',monospace;font-size:10px;color:#8397aa;letter-spacing:1px}.slot .slot-label{position:absolute;bottom:12px;left:0;width:100%;font-weight:800;font-size:15px}.slot canvas{width:137px;height:137px;image-rendering:pixelated;filter:drop-shadow(0 10px 15px #090b1666)}.slot .empty-plus{font-size:26px;color:#58697b}.slot .empty-note{font-size:11px;color:#788c9d;line-height:1.5}.slot.has-element .empty-plus,.slot.has-element .empty-note{display:none}.craft-center{display:flex;flex-direction:column;align-items:center;gap:19px;z-index:1}.plus-circle{border:1px solid #40536a;background:#243142b5;border-radius:100%;height:44px;width:44px;display:grid;place-items:center;font-size:23px;font-weight:400;color:#a7b9cd}.dotted-line{height:21px;border-left:1px dashed #4c6476}.craft-hint{position:absolute;bottom:5px;left:0;right:0;display:flex;justify-content:center;gap:7px;color:#6f8498;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase}.craft-hint .sparkle{color:#7ebfae}.craft-footer{z-index:1;position:relative;border-top:1px solid #344052;padding-top:16px;display:flex;align-items:center;gap:16px}.status-result{min-width:0;display:flex;align-items:center;gap:13px;flex:1}.mini-result{width:56px;height:56px;display:grid;place-items:center;border:1px solid #34465a;background:#202b3a;border-radius:9px;flex-shrink:0}.mini-result canvas{height:51px;width:51px;image-rendering:pixelated}.mini-result .unknown{font-family:'Space Mono',monospace;color:#657c8d;font-size:23px}.status-result small{display:block;font-family:'Space Mono',monospace;color:#93a7bb;font-size:9px;text-transform:uppercase;letter-spacing:1.3px;margin-bottom:4px}.status-result strong{display:block;font-size:15px;color:#e5f1fa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.status-result .recipe-line{font-size:11px;color:#90a0b2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mix-actions{display:flex;align-items:center;gap:9px}.clear-btn{background:#202b3a;border:1px solid #39485d;border-radius:7px;height:50px;width:49px;color:#9dadbf;font-size:20px}.clear-btn:hover{color:#fff;border-color:#71899c}.mix-btn{border:1px solid #b0e5d8;background:#a3e5d6;color:#12322d;min-width:170px;height:50px;border-radius:7px;font-size:12px;font-weight:900;letter-spacing:1.3px;box-shadow:0 4px 20px #79cdbb16;transition:background .15s,transform .15s}.mix-btn:hover{background:#bdf7e9;transform:translateY(-2px)}.mix-btn:disabled{cursor:not-allowed;background:#3e5361;border-color:#3e5361;color:#7e94a2;box-shadow:none;transform:none}.mix-btn .arrow{font-size:17px;margin-left:13px}.burst{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}.burst canvas{width:100%;height:100%}.lab.flash{animation:labflash .45s ease}@keyframes labflash{0%{box-shadow:inset 0 0 0 #a3e5d600}32%{box-shadow:inset 0 0 60px #a3e5d61f}100%{box-shadow:inset 0 0 0 #a3e5d600}}.toast{position:absolute;z-index:10;left:50%;top:50%;width:min(300px,80%);transform:translate(-50%,-50%) scale(.9);padding:17px 21px;border:1px solid #759c8f;border-radius:12px;background:#182b30eb;backdrop-filter:blur(12px);box-shadow:0 20px 90px #0009;display:none;text-align:center;pointer-events:none}.toast.show{display:block;animation:toastpop 2.4s ease both}.toast .toast-small{font-family:'Space Mono',monospace;color:#a5ebd7;letter-spacing:2px;font-size:10px}.toast strong{font-size:26px;display:block;margin:4px 0}.toast span{font-size:12px;color:#a4bbbd}@keyframes toastpop{0%{opacity:0;transform:translate(-50%,-45%) scale(.88)}12%,83%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-55%) scale(.96)}}
+.catalog{padding:21px 23px 18px;display:flex;flex-direction:column}.catalog .panel-header{align-items:center}.catalog .title{font-size:19px}.catalog-topright{display:flex;align-items:center;gap:12px}.catalog-count{font-family:'Space Mono',monospace;font-size:10px;color:#8f9fb5}.catalog-count b{color:#d6e5f1}.catalog-switch{display:flex;background:#101722;padding:3px;border:1px solid #303d50;border-radius:7px;gap:2px}.catalog-switch button{border:0;border-radius:5px;color:#90a1b3;background:none;padding:7px 10px;font-size:10px;font-weight:800}.catalog-switch button.active{background:#344154;color:#e9f7fb}.catalog-body{overflow-y:auto;scrollbar-width:thin;scrollbar-color:#3d4c61 transparent;min-height:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));align-content:start;gap:10px;margin-top:17px;padding:1px 1px 9px}.catalog-card{height:104px;background:#1e2836;border:1px solid #334155;border-radius:8px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#cbd6e8;overflow:hidden}.catalog-card.unlocked{cursor:pointer}.catalog-card.unlocked:hover{background:#293646;border-color:#688d85}.catalog-card canvas{height:65px;width:65px;image-rendering:pixelated}.catalog-card span{font-size:11px;font-weight:800}.catalog-card.locked{border-style:dashed;background:#1b2330aa;color:#64778c;cursor:default}.catalog-card.locked .lock-icon{font-family:'Space Mono',monospace;font-size:26px;letter-spacing:-5px;color:#435467;transform:translateX(-3px)}.catalog-card.locked .lock-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1px;color:#5c7284;margin-top:9px}.catalog-card .id-tag{position:absolute;top:8px;left:9px;font-family:'Space Mono',monospace;font-size:8px;color:#6e879b}.catalog-empty{grid-column:1/-1;text-align:center;padding:25px;color:#91a1b3;font-size:12px}
+.bottom-strip{display:none}.credits{font-family:'Space Mono',monospace;color:#536778;font-size:9px;text-align:right;padding-top:7px}.credits a{color:#7da69f;text-decoration:none}.credits a:hover{text-decoration:underline}
+.dialog-backdrop{position:fixed;inset:0;background:#05080cb9;z-index:30;display:none;align-items:center;justify-content:center;padding:20px}.dialog-backdrop.visible{display:flex}.dialog{background:#192333;border:1px solid #486273;border-radius:15px;max-width:430px;width:100%;padding:28px;box-shadow:0 40px 100px #0009}.dialog h2{font-size:24px;margin:7px 0 12px;letter-spacing:-.6px}.dialog p{font-size:13px;color:#acbbcb;line-height:1.7;margin:8px 0}.dialog .close{float:right;background:#28364a;border:1px solid #455871;color:#d1e0ef;border-radius:6px;padding:5px 10px}.dialog code{color:#b8e4d8}
+@media (max-width:1100px){.workspace{grid-template-columns:minmax(260px,300px) minmax(0,1fr)}.lab{padding:20px}.craft-area{gap:12px}.slot{height:176px;min-width:120px}.slot canvas{width:105px;height:105px}.mix-btn{min-width:130px}.catalog-body{grid-template-columns:repeat(auto-fill,minmax(96px,1fr))}.tagline{display:none}}
+@media(max-width:780px){.app{height:auto;min-height:100vh;padding:0 12px 15px}.topbar{height:72px}.branding strong{font-size:14px}.head-divider,.progress-top .fillbar,.progress-top span{display:none}.workspace{height:auto;display:flex;flex-direction:column;gap:13px;min-height:0}.ingredients{height:auto;max-height:350px}.ingredients .inventory{grid-template-columns:repeat(4,minmax(0,1fr));max-height:190px;overflow-y:auto}.element-card{height:132px}.element-card canvas{width:66px;height:66px}.inventory-footer{display:none}.rightside{display:contents}.lab{min-height:425px;order:0}.ingredients{order:1}.catalog{order:2;min-height:280px;max-height:480px}.catalog-body{grid-template-columns:repeat(auto-fill,minmax(92px,1fr));overflow-y:auto}.credits{text-align:center}.craft-area{min-height:230px}}
+@media(max-width:490px){.head-spacer{flex:1}.header-btn{padding:0 8px}.header-btn .reset-label{display:none}.mark{height:36px;width:36px}.branding strong{font-size:13px}.branding small{letter-spacing:1.4px;font-size:8px}.progress-top{display:none}.ingredients .inventory{grid-template-columns:repeat(3,minmax(0,1fr));max-height:310px}.panel{border-radius:9px}.lab{padding:18px 13px 14px;min-height:422px}.lab .lab-right-label{display:none}.lab .title{font-size:18px}.craft-area{gap:6px}.slot{min-width:0;width:42%;height:163px}.slot canvas{height:92px;width:92px}.slot .slot-label{font-size:13px}.plus-circle{height:31px;width:31px;font-size:20px}.craft-center{gap:10px}.craft-footer{gap:8px}.mix-btn{height:45px;min-width:112px;font-size:10px;letter-spacing:.7px}.mix-btn .arrow{margin-left:4px}.clear-btn{height:45px;width:38px}.mini-result{height:46px;width:46px}.mini-result canvas{height:43px;width:43px}.status-result{gap:7px}.status-result strong{font-size:13px}.status-result .recipe-line{font-size:10px}.catalog{padding:18px 13px 12px}.catalog-topright{gap:4px}.catalog-count{display:none}.catalog-switch button{padding:6px}.catalog-body{grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:7px}.catalog-card{height:96px}.catalog-card canvas{width:57px;height:57px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ARCANE EDITION — an open magical stage instead of boxed item cards */
+:root { --bg:#0d0b15;--surface:#181422;--surface2:#211a2d;--surface3:#292037;--stroke:#40344d;--stroke-light:#58456b;--text:#f6efff;--muted:#aa98bc;--accent:#d2a5ff;--gold:#ecca91;--green:#a2deba;--danger:#f0a2b2; }
+body { background:radial-gradient(ellipse at 65% -15%,#39274b99,transparent 51%),radial-gradient(ellipse at 0 85%,#23172f99,transparent 57%),#0d0b15 }
+.panel {background:linear-gradient(164deg,#1d1729,#14111f 76%);border-color:#463954;border-radius:12px;box-shadow:0 16px 45px #05030c50,inset 0 1px #ffffff08}
+.mark {color:#edc4ff;border-color:#775089;background:#33203e;box-shadow:inset 0 0 0 4px #1c1324,0 0 23px #b46aff17}
+.branding strong em,.eyebrow {color:#cc9ee6}.branding small {color:#a089ac}
+.meta-pill,.header-btn,.catalog-switch {background:#271e34;border-color:#554464;color:#e3ccea}
+.search-box {background:#15111e;border-color:#493950}
+.filter-btn.active {background:#3a2748;border-color:#785491;color:#ebcbff}
+.progress-top .fillbar {background:#34263e}.progress-top .fillbar i {background:linear-gradient(90deg,#8a56dc,#f0c1ff)}
+.ingredients {background:radial-gradient(ellipse at 49% 38%,#4a276016,transparent 80%),linear-gradient(#1c1627,#14101d)}
+.inventory {gap:0 2px;padding:0 2px 18px;grid-auto-rows:180px}
+.element-card {height:180px;padding:8px 5px 10px;background:transparent;border:1px solid transparent;border-radius:0;overflow:hidden;justify-content:flex-end;gap:0;isolation:isolate}
+.element-card:before {content:'';z-index:0;position:absolute;inset:0;background:radial-gradient(ellipse 45% 40% at 50% 46%,var(--halo,#a970cc33),transparent 85%);opacity:.8;pointer-events:none}
+.element-card:after {content:'';position:absolute;z-index:0;bottom:11px;left:-1px;right:-1px;height:41px;border-top:3px solid #59466b;background-color:#211a2b;background-image:linear-gradient(#100d1855 1px,transparent 1px),linear-gradient(90deg,#62517188 1px,transparent 1px),linear-gradient(90deg,#62517170 1px,transparent 1px);background-position:0 0,0 0,16px 13px;background-size:100% 14px,32px 28px,32px 28px;box-shadow:0 -7px 16px #bc72ec16,inset 0 5px 8px #08061050;pointer-events:none}
+.element-card:hover,.element-card.selected {transform:translateY(-2px);border-color:transparent;background:radial-gradient(ellipse at 50% 40%,#693c8f23,transparent 64%);box-shadow:none}
+.element-card.selected:before {opacity:1;background:radial-gradient(ellipse 45% 45% at 50% 45%,#ab75ed4d,transparent 85%)}
+.element-card.selected:after {border-top-color:#d3a0ee;box-shadow:0 -6px 16px #b974fc33}
+.element-card.selected .element-name {color:#efc9ff}
+.element-card.selected .element-name:before{content:'✦ ';color:#efb3fa}
+.element-card canvas {position:absolute;z-index:1;top:3px;left:50%;transform:translateX(-50%);width:min(123px,94%);height:124px;filter:drop-shadow(0 0 7px #a67ae34a);image-rendering:pixelated}
+.element-card .element-name {z-index:2;position:relative;font-size:13px;text-shadow:0 2px 4px #000,0 0 5px #000;font-weight:800;margin-top:auto;line-height:16px}
+.element-card .element-type {z-index:2;position:relative;font-size:8px;color:#b8a3c8;text-shadow:0 1px 3px #090710;margin:2px 0 0}
+.inventory-footer {border-top-color:#453850}.inventory-footer .dot{background:#c994fd;box-shadow:0 0 12px #b96bff}
+.lab {background:radial-gradient(ellipse at 52% 51%,#54306630,transparent 55%),linear-gradient(145deg,#1f182c,#15111f)}
+.lab::before {opacity:.35;background-image:radial-gradient(#af88c944 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(to bottom,transparent,#000 30%,#000 70%,transparent)}
+.lab .lab-right-label i {background:#caa1ef;box-shadow:0 0 10px #c580ff}
+.craft-area {isolation:isolate;gap:12px;margin:7px 0 0;min-height:225px;overflow:hidden}
+.craft-area:before {content:'';position:absolute;z-index:-1;left:-3%;right:-3%;bottom:24px;height:57px;background:linear-gradient(#8d6aaa 0 2px,#382840 2px 5px,transparent 5px),linear-gradient(#160f20 1px,transparent 1px),linear-gradient(90deg,#69557b84 1px,transparent 1px),linear-gradient(90deg,#69557b78 1px,transparent 1px),linear-gradient(180deg,#2d2039,#110e19);background-position:0 0,0 6px,0 6px,21px 20px,0 0;background-size:100% 100%,100% 16px,42px 32px,42px 32px,100% 100%;box-shadow:0 -13px 29px #a160d02a,inset 0 11px 14px #0006;pointer-events:none}
+.craft-area:after {content:'';position:absolute;z-index:-1;left:9%;right:9%;bottom:74px;height:44px;background:radial-gradient(ellipse at center,#ad6beb24,transparent 68%);pointer-events:none}
+.slot,.slot.has-element {position:relative;z-index:2;border:1px solid transparent;background:transparent;box-shadow:none;width:min(31%,230px);height:216px;min-width:120px;overflow:visible;outline:0;border-radius:4px}
+.slot:after {content:'';position:absolute;bottom:74px;left:25%;right:25%;height:9px;border-radius:50%;background:#ba7ade45;filter:blur(7px);z-index:-1}
+.slot.has-element:hover,.slot:hover {background:radial-gradient(ellipse at 50% 43%,#b666ff12,transparent 70%);border-color:transparent;transform:translateY(-3px)}
+.slot.dragover {background:radial-gradient(ellipse at center,#b66dff33,transparent 77%);border:1px dashed #a879ce}
+.slot .slot-id {color:#b18abd;top:11px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:9px}
+.slot .slot-label{bottom:28px;color:#f4ddff;text-shadow:0 2px 5px #090310,0 0 14px #6f42a8;font-size:15px}
+.slot canvas {width:160px;height:160px;max-width:110%;image-rendering:pixelated;filter:drop-shadow(0 0 11px #9f5de563)}
+.slot .empty-note{color:#af8ebc}.slot .empty-plus{color:#9f72bf}
+.craft-center {width:78px;min-width:46px;gap:0;position:relative;z-index:1;margin-bottom:17px}
+.craft-center .dotted-line {height:27px;border-left:1px dashed #9161b7}
+.plus-circle {width:69px;height:69px;background:radial-gradient(circle,#54306666,#22182db3 72%);border:1px solid #875ca5;border-radius:50%;font-size:31px;color:#dcb1f7;box-shadow:0 0 26px #9852e134,inset 0 0 18px #9c52e722;animation:circleturn 7s linear infinite}
+@keyframes circleturn{50%{box-shadow:0 0 34px #d084f254,inset 0 0 23px #bd67f044}}
+.craft-hint {bottom:1px;color:#ad8fbc;z-index:3;text-shadow:0 1px 4px #0a0410;font-size:8px}.craft-hint .sparkle{color:#e6b9ff}
+.ritual-stage {position:absolute;z-index:1;inset:0;width:100%;height:100%;pointer-events:none;image-rendering:pixelated}
+.merge-layer {position:absolute;z-index:8;inset:0;pointer-events:none;overflow:hidden}
+.merge-actor {width:152px;height:152px;position:absolute;left:0;top:0;margin-left:-76px;margin-top:-76px;will-change:transform,opacity;display:grid;place-items:center}
+.merge-actor canvas,.merge-reveal canvas {display:block;width:100%;height:100%;image-rendering:pixelated;filter:drop-shadow(0 0 11px #c281ff99)}
+.merge-reveal {position:absolute;width:188px;height:188px;left:0;top:0;margin-left:-94px;margin-top:-94px;display:flex;align-items:center;flex-direction:column;justify-content:center;will-change:transform,opacity;opacity:0}
+.merge-reveal canvas {width:172px;height:172px;flex-shrink:0}
+.merge-reveal .reveal-name {font-family:'Space Mono',monospace;position:absolute;top:151px;text-align:center;font-size:13px;text-shadow:0 1px 7px #000,0 0 16px #bd77ff;letter-spacing:2px;font-weight:700;color:#ffddff;white-space:nowrap}
+.lab.is-mixing .slot canvas{opacity:0}.lab.is-mixing .craft-center{opacity:.13}.lab.is-mixing .slot .slot-label{opacity:.3}
+.lab.merge-impact {animation:impactflash .55s ease-out}
+@keyframes impactflash{0%{box-shadow:inset 0 0 0 #ad68ff00}22%{box-shadow:inset 0 0 85px #a862ff54,0 0 38px #a862ff33}100%{box-shadow:inset 0 0 0 #a862ff00}}
+.lab.merge-failed {animation:failedflash .55s ease-out}@keyframes failedflash{20%{box-shadow:inset 0 0 65px #ea557544}100%{box-shadow:inset 0 0 0 #ea557500}}
+.craft-footer {border-top-color:#4e365f}
+.mini-result {background:#25192f;border-color:#57406c}.mix-btn {border-color:#d4a8ff;background:linear-gradient(120deg,#bd7fe9,#edb8ff);color:#2c163e;box-shadow:0 0 22px #af64f12a}.mix-btn:hover{background:#e3a5ff;box-shadow:0 0 30px #bc7aff44}
+.mix-btn:disabled{background:#453351;border-color:#473554;color:#927b9e}.clear-btn {background:#241a30;border-color:#4d3a5b;color:#c29fd3}
+.toast {top:84px;left:50%;width:min(255px,70%);padding:12px 15px;background:#291b35f5;border-color:#b478d2;box-shadow:0 10px 43px #0a061caa;backdrop-filter:blur(10px)}.toast strong{font-size:18px}.toast span{font-size:10px}.toast .toast-small{color:#e5baff}
+.catalog {background:linear-gradient(155deg,#1e172b,#16111d)}
+.catalog-body {gap:2px 3px;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));padding:0;grid-auto-rows:118px}
+.catalog-card {height:118px;border:1px solid transparent;border-radius:0;background:transparent;isolation:isolate}
+.catalog-card::after{content:'';position:absolute;z-index:-1;bottom:0;left:-2px;right:-2px;height:29px;background:linear-gradient(#5f496e 0 3px,transparent 3px),linear-gradient(#140f1c 1px,transparent 1px),linear-gradient(90deg,#69537c7b 1px,transparent 1px),linear-gradient(180deg,#302237,#191320);background-size:100% 100%,100% 12px,22px 24px,100% 100%;box-shadow:0 -4px 10px #8758a21e}
+.catalog-card.unlocked:hover{background:radial-gradient(ellipse at 50% 35%,#9459c52b,transparent 65%);border-color:transparent;transform:translateY(-2px)}
+.catalog-card canvas {height:85px;width:85px;image-rendering:pixelated;filter:drop-shadow(0 0 6px #bb7ff95b);position:absolute;top:0;left:50%;transform:translateX(-50%)}
+.catalog-card.unlocked>span:last-child{position:absolute;bottom:6px;color:#f7e6ff;text-shadow:0 1px 4px #000;font-size:11px}
+.catalog-card .id-tag{z-index:2;color:#a387ae;top:6px;left:6px}
+.catalog-card.locked {background:transparent;border-color:transparent;opacity:.6}.catalog-card.locked .lock-icon{font-size:20px;color:#755b83;transform:translateY(-8px)}
+.catalog-card.locked .lock-label{font-size:8px;color:#9881a5;margin-top:0}
+.catalog-switch {background:#1b1424}.catalog-switch button.active{background:#50375e;color:#f8dbff}
+.credits a{color:#c697dd}
+@media (max-width:1100px) {.slot canvas{width:132px;height:132px}.craft-area{gap:0}.craft-center{width:52px}.plus-circle{width:50px;height:50px}.slot{height:202px!important}.catalog-body{grid-template-columns:repeat(auto-fill,minmax(89px,1fr))}}
+@media (max-width:780px) {.ingredients{max-height:420px}.ingredients .inventory{max-height:250px;grid-auto-rows:140px}.element-card{height:140px}.element-card canvas{width:100px;height:104px}.element-card:after{height:35px;bottom:4px}.lab{min-height:445px}.craft-area{min-height:247px}.catalog-card{height:111px}.catalog-body{grid-auto-rows:111px}}
+@media (max-width:490px) {.ingredients .inventory{grid-auto-rows:137px;max-height:295px}.element-card{height:137px}.element-card canvas{width:100px;height:100px}.slot{height:204px!important;width:41%}.slot canvas{width:112px;height:112px}.slot .slot-id{font-size:7px}.slot .slot-label{bottom:29px;font-size:12px}.craft-center{width:36px;min-width:36px}.plus-circle{width:36px;height:36px;font-size:23px}.craft-area:before{bottom:25px;height:46px}.craft-hint{font-size:7px}.catalog-body{grid-template-columns:repeat(auto-fill,minmax(84px,1fr));grid-auto-rows:106px}.catalog-card{height:106px}.catalog-card canvas{width:78px;height:78px}.merge-actor{width:109px;height:109px;margin-left:-54.5px;margin-top:-54.5px}.merge-reveal{width:144px;height:144px;margin-left:-72px;margin-top:-72px}.merge-reveal canvas{width:132px;height:132px}.merge-reveal .reveal-name{top:119px;font-size:11px}.toast{top:61px}}
+
+
+/* Version 2: consistent behind-the-effect floor and advanced laboratory */
+.element-card{position:relative;contain:paint;overflow:hidden}
+.element-card::after{z-index:0!important;bottom:23px!important;height:31px!important}
+.element-card::before{z-index:0!important}
+.element-card canvas{z-index:2!important;top:0!important;pointer-events:none}
+.element-card .element-name,.element-card .element-type{z-index:3!important}
+.catalog-card::after{z-index:0!important;bottom:0!important}
+.catalog-card canvas{z-index:2!important}
+.catalog-card.unlocked>span:last-child{z-index:3!important}
+.lab-modes{display:flex;gap:7px;margin:12px 0 3px;flex-wrap:wrap}
+.lab-modes button{border:1px solid #564267;border-radius:8px;background:#21182c;color:#bca2cf;font-size:11px;font-weight:850;padding:9px 14px;cursor:pointer;min-width:145px;text-align:left}
+.lab-modes button small{display:block;font-weight:500;font-size:9px;margin-top:3px;color:#9e87b1;letter-spacing:.4px}
+.lab-modes button.active{background:linear-gradient(135deg,#56356e,#3d2753);color:#fff0ff;border-color:#ba84df;box-shadow:0 0 19px #bb77e51f}
+.advanced-only{display:none!important}
+.advanced-mode .advanced-only{display:flex!important}
+.advanced-mode .craft-area{gap:2px}
+.advanced-mode .slot{width:29%;min-width:0;height:196px;flex-shrink:1}
+.advanced-mode .slot canvas{width:118px;height:118px;max-width:110%}
+.advanced-mode .craft-center{min-width:25px;width:36px}
+.advanced-mode .plus-circle{width:36px;height:36px;font-size:20px}
+.advanced-mode .craft-hint{font-size:9px}
+.advanced-mode .craft-area:before{bottom:25px}
+.catalog-body{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}
+@media(max-width:780px){.advanced-mode .slot{height:179px!important}.advanced-mode .slot canvas{width:98px;height:98px}.lab-modes button{min-width:115px}}
+@media(max-width:490px){.advanced-mode .slot{height:170px!important;width:30%}.advanced-mode .slot canvas{width:75px;height:75px}.advanced-mode .craft-center{width:20px;min-width:20px}.advanced-mode .plus-circle{width:23px;height:23px;font-size:15px}.advanced-mode .slot .slot-label{bottom:27px;font-size:10px}.advanced-mode .slot .slot-id{font-size:7px}.lab-modes button{padding:7px 9px;min-width:0;flex:1;font-size:10px}.lab-modes button small{font-size:8px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="mark" aria-hidden="true"><span class="mark-grid">✣</span></div>
+    <div class="branding"><strong>PIXEL<em>/</em>ALCHEMY</strong><small>the element lab</small></div>
+    <div class="head-divider"></div><span class="tagline">A tiny universe, waiting to be made.</span>
+    <div class="head-spacer"></div>
+    <div class="progress-top"><span id="top-fraction">04 / 27</span><div class="fillbar"><i id="top-progress" style="width:15%"></i></div></div>
+    <button class="header-btn" id="help" aria-label="How to play">? &nbsp; Help</button>
+    <button class="header-btn" id="reset" aria-label="Reset discoveries">↺ <span class="reset-label">Reset</span></button>
+  </header>
+  <main class="workspace">
+    <aside class="panel ingredients">
+      <div class="panel-header"><div><div class="eyebrow">01 / Your inventory</div><h2 class="title">Elements</h2></div><span class="meta-pill" id="inventory-count">04</span></div>
+      <label class="search-box"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="6"/><path d="m14.5 14.5 6 6"/></svg><input id="search" type="search" autocomplete="off" placeholder="Search elements..." aria-label="Search discovered elements" /><span style="font:10px monospace;color:#5d7185">⌕</span></label>
+      <nav class="filter-row" aria-label="Inventory filter"><button class="filter-btn active" data-filter="all">All elements</button><button class="filter-btn" data-filter="core">Starter</button><button class="filter-btn" data-filter="created">Discovered</button></nav>
+      <div class="inventory" id="inventory" aria-label="Discovered elements"></div>
+      <div class="inventory-footer"><span class="dot"></span><span>Select two ingredients, or drag them into the lab.</span></div>
+    </aside>
+    <div class="rightside">
+      <section class="panel lab" id="lab">
+        <div class="panel-header"><div><div class="eyebrow">02 / Experiment station</div><h2 class="title" id="lab-title">The mixing table</h2></div><span class="lab-right-label"><i></i> LAB ONLINE</span></div>
+        <div class="lab-modes"><button id="mode-normal" class="active" type="button">✧ Elemental mixing <small>2 ingredients</small></button><button id="mode-advanced" type="button">✦ Advanced synthesis <small>3 ingredients</small></button></div>
+        <div class="burst"><canvas id="burst" aria-hidden="true"></canvas></div>
+        <div class="craft-area"><canvas class="ritual-stage" id="ritual-stage" aria-hidden="true"></canvas>
+          <button class="slot has-element" id="slot0" data-slot="0" title="Drop an ingredient here" aria-label="Ingredient one"><span class="slot-id">SLOT 01</span><canvas width="96" height="96" data-element="fire"></canvas><span class="empty-plus">+</span><span class="empty-note">Choose ingredient</span><span class="slot-label">Fire</span></button>
+          <div class="craft-center"><div class="dotted-line"></div><div class="plus-circle">✧</div><div class="dotted-line"></div></div>
+          <button class="slot has-element" id="slot1" data-slot="1" title="Drop an ingredient here" aria-label="Ingredient two"><span class="slot-id">SLOT 02</span><canvas width="96" height="96" data-element="water"></canvas><span class="empty-plus">+</span><span class="empty-note">Choose ingredient</span><span class="slot-label">Water</span></button>
+          <button class="slot advanced-only" id="slot2" data-slot="2" title="Drop an ingredient here" aria-label="Ingredient three"><span class="slot-id">SLOT 03</span><canvas width="96" height="96"></canvas><span class="empty-plus">+</span><span class="empty-note">Choose ingredient</span><span class="slot-label"></span></button>
+          <div class="craft-hint" id="craft-hint"><span class="sparkle">✧</span> Two ingredients. Infinite possibilities. <span class="sparkle">✧</span></div>
+        </div>
+        <div class="craft-footer">
+          <div class="status-result"><div class="mini-result" id="result-icon"><span class="unknown">?</span></div><div><small id="result-overline">Awaiting experiment</small><strong id="result-name">What will you discover?</strong><div class="recipe-line" id="result-desc">Fire + Water = ???</div></div></div>
+          <div class="mix-actions"><button class="clear-btn" id="clear" title="Clear the mixing slots" aria-label="Clear mixing slots">↺</button><button class="mix-btn" id="mix">MIX ELEMENTS <span class="arrow">→</span></button></div>
+        </div>
+        <div class="toast" id="toast" role="status" aria-live="polite"><div class="toast-small" id="toast-label">NEW DISCOVERY!</div><strong id="toast-name">Steam</strong><span id="toast-sub">Added to your collection</span></div>
+      </section>
+      <section class="panel catalog">
+        <div class="panel-header"><div><div class="eyebrow">03 / Your discoveries</div><h2 class="title">Discovery grimoire</h2></div><div class="catalog-topright"><span class="catalog-count"><b id="catalog-found">04</b> / <span id="catalog-total">27</span> found</span><div class="catalog-switch" role="group" aria-label="Catalog filter"><button class="active" data-view="all">All</button><button data-view="found">Unlocked</button><button data-view="locked">Locked</button><button data-view="advanced">Advanced</button></div></div></div>
+        <div class="catalog-body" id="catalog-body"></div>
+      </section>
+    </div>
+  </main>
+  <div class="credits">ARCANE EDITION · CODE-GENERATED PIXEL VFX · INSPIRED BY <a href="https://github.com/patch-gg/pixelfx#make-your-own" target="_blank" rel="noopener noreferrer">PIXELFX ↗</a> · CLASSIC FORMULAS: <a href="https://github.com/alancnet/little-alchemy" target="_blank" rel="noopener noreferrer">ALANCNET/LITTLE-ALCHEMY ↗</a></div>
+</div>
+<div class="dialog-backdrop" id="help-dialog" role="dialog" aria-modal="true" aria-labelledby="help-title"><div class="dialog"><button class="close" id="close-help">✕</button><div class="eyebrow">Field notes / 001</div><h2 id="help-title">How to play</h2><p>Begin with <strong>Earth, Water, Wind and Fire.</strong> Select any two elements from the left inventory, or drag them onto the two slots of the mixing table.</p><p>Hit <code>MIX ELEMENTS</code>. The two sprites fly together and react at the center. If the recipe works, the new element appears in your inventory and unlocks a card in the catalog below.</p><p>Try <strong>Fire + Water</strong> to make Steam, or <strong>Fire + Earth</strong> to make Lava. You can combine an element with itself, too.</p><p>Every elemental spirit is rendered with code: crisp pixel particles, spell rings, glow and animated magical effects. No image assets.</p></div></div>
+<script>
+(()=>{'use strict';
+let items=[
+ ['earth','Earth','BASE','#aeae77'],['water','Water','BASE','#67cce0'],['wind','Wind','BASE','#a5d1cd'],['fire','Fire','BASE','#ffaf5a'],
+ ['steam','Steam','VAPOR','#c4e0df'],['lava','Lava','MOLTEN','#ff9563'],['mud','Mud','MIXTURE','#b08a65'],['energy','Energy','FORCE','#f4d677'],['dust','Dust','PARTICLE','#c6b183'],['rain','Rain','WEATHER','#88c6e2'],['cloud','Cloud','SKY','#dce5e5'],['stone','Stone','MINERAL','#aab4c0'],['brick','Brick','MATERIAL','#cc836c'],['plant','Plant','LIFE','#91d7a0'],['ash','Ash','RESIDUE','#aaa4b3'],['forest','Forest','NATURE','#61b588'],['lake','Lake','WATER','#64b6dd'],['sun','Sun','CELESTIAL','#f2ce72'],['storm','Storm','WEATHER','#a5aedd'],['mountain','Mountain','LAND','#abb9c6'],['geyser','Geyser','FORCE','#b6e9ee'],['lightning','Lightning','ENERGY','#eedc8f'],['river','River','WATER','#6acada'],['wave','Wave','WATER','#8ecbdc'],['fog','Fog','VAPOR','#b4c8d5'],['sand','Sand','EARTH','#d8b67c'],['glass','Glass','MATERIAL','#b5eff0']
+];
+let byId=Object.fromEntries(items.map(x=>[x[0],{id:x[0],name:x[1],type:x[2],color:x[3]}]));
+const base=['earth','water','wind','fire']; let order=items.map(x=>x[0]);
+const pairs=[
+ ['fire','water','steam'],['fire','earth','lava'],['earth','water','mud'],['wind','fire','energy'],['wind','earth','dust'],['wind','water','rain'],['wind','steam','cloud'],['water','lava','stone'],['wind','lava','stone'],['fire','mud','brick'],['rain','earth','plant'],['water','plant','forest'],['plant','plant','forest'],['fire','plant','ash'],['fire','forest','ash'],['water','water','lake'],['fire','fire','sun'],['wind','wind','storm'],['earth','earth','mountain'],['steam','earth','geyser'],['cloud','fire','lightning'],['cloud','energy','lightning'],['cloud','cloud','storm'],['mountain','water','river'],['storm','water','wave'],['lake','wind','wave'],['cloud','lake','fog'],['steam','cloud','fog'],['earth','stone','sand'],['sand','fire','glass'],['river','earth','plant'],['sun','rain','plant'],['dust','fire','ash'],['stone','fire','lava'],['rain','cloud','storm']
+];
+const recipes=new Map(pairs.map(([a,b,result])=>[[a,b].sort().join('+'),result]));
+const key=(a,b)=>[a,b].sort().join('+');
+let owned=new Set(base),slots=['fire','water',null],next=0,filter='all',view='all',last=null,history=[],mixMode=2;
+const ADVANCED_DATA=[{"name":"Battery","inputs":["electricity","metal","energy"]},{"name":"Telephone","inputs":["sound","wire","electricity"]},{"name":"Factory","inputs":["house","metal","tool"]},{"name":"Camera","inputs":["glass","light","tool"]},{"name":"Antenna","inputs":["metal","wire","sky"]},{"name":"Plastic","inputs":["oil","fire","pressure"]},{"name":"Magnet","inputs":["metal","electricity","stone"]},{"name":"Sensor","inputs":["electricity","light","wire"]},{"name":"Coffee","inputs":["plant","water","fire"]},{"name":"Filter","inputs":["sand","glass","water"]},{"name":"Hydrogen","inputs":["water","electricity","air"]},{"name":"Road","inputs":["stone","sand","city"]},{"name":"Thermometer","inputs":["glass","mercury","heat"]},{"name":"Asteroid","inputs":["space","stone","planet"]},{"name":"Portal","inputs":["space","energy","light"]},{"name":"Seed","inputs":["plant","earth","life"]},{"name":"DNA","inputs":["life","human","microscope"]},{"name":"Heart","inputs":["human","life","blood"]},{"name":"Medicine","inputs":["doctor","plant","science"]},{"name":"Food","inputs":["plant","meat","water"]},{"name":"Package","inputs":["paper","box","rope"]},{"name":"Force Field","inputs":["energy","light","glass"]},{"name":"Plasma","inputs":["fire","electricity","gas"]},{"name":"Magic","inputs":["energy","wizard","light"]},{"name":"Game","inputs":["human","fun","idea"]},{"name":"Art","inputs":["human","paint","idea"]},{"name":"Museum","inputs":["art","house","history"]},{"name":"Guitar","inputs":["wood","music","wire"]},{"name":"Microphone","inputs":["sound","metal","electricity"]},{"name":"Film","inputs":["light","paper","camera"]},{"name":"Balloon","inputs":["air","fabric","pressure"]},{"name":"Ledger","inputs":["paper","money","book"]},{"name":"Law","inputs":["human","paper","city"]},{"name":"Market","inputs":["money","city","human"]},{"name":"Eye","inputs":["human","light","life"]},{"name":"Sleep","inputs":["night","human","time"]},{"name":"Brain","inputs":["human","idea","life"]},{"name":"Mercury","inputs":["metal","water","pressure"]},{"name":"Heat","inputs":["fire","energy","air"]},{"name":"Science","inputs":["idea","human","book"]},{"name":"Box","inputs":["wood","paper","tool"]},{"name":"Gas","inputs":["air","fire","pressure"]},{"name":"Fun","inputs":["human","music","love"]},{"name":"History","inputs":["time","book","human"]},{"name":"Computer","inputs":["CPU","electricity","Monitor Screen"]},{"name":"Gaming PC","inputs":["computer","electricity","metal"]},{"name":"Laptop","inputs":["computer","battery","glass"]},{"name":"Tablet","inputs":["computer","glass","light"]},{"name":"Smartphone","inputs":["computer","telephone","glass"]},{"name":"Smartwatch","inputs":["watch","computer","electricity"]},{"name":"Server Rack","inputs":["computer","metal","wire"]},{"name":"Data Center","inputs":["computer","house","electricity"]},{"name":"Cloud Server","inputs":["computer","cloud","electricity"]},{"name":"Supercomputer","inputs":["computer","computer","electricity"]},{"name":"Quantum Computer","inputs":["computer","energy","crystal ball"]},{"name":"Artificial Intelligence","inputs":["computer","human","idea"]},{"name":"Neural Network","inputs":["computer","brain","electricity"]},{"name":"Robot Assistant","inputs":["robot","computer","human"]},{"name":"Industrial Robot","inputs":["robot","metal","factory"]},{"name":"Humanoid Robot","inputs":["robot","human","electricity"]},{"name":"Drone Camera","inputs":["drone","camera","electricity"]},{"name":"Security Camera","inputs":["camera","electricity","glass"]},{"name":"Smart Home","inputs":["house","computer","sensor"]},{"name":"Smart City","inputs":["city","computer","electricity"]},{"name":"Internet Router","inputs":["internet","wire","electricity"]},{"name":"Wi-Fi Tower","inputs":["internet","antenna","electricity"]},{"name":"Satellite","inputs":["space","metal","computer"]},{"name":"GPS Navigator","inputs":["satellite","map","computer"]},{"name":"Hologram","inputs":["light","computer","optical fiber"]},{"name":"Virtual Reality","inputs":["computer","glasses","light"]},{"name":"Augmented Reality","inputs":["glasses","computer","camera"]},{"name":"3D Printer","inputs":["printer","plastic","computer"]},{"name":"Laser Cutter","inputs":["light","metal","tool"]},{"name":"Microchip","inputs":["electricity","metal","sand"]},{"name":"CPU","inputs":["microchip","electricity","computer"]},{"name":"Graphics Card","inputs":["microchip","light","computer"]},{"name":"Monitor Screen","inputs":["glass","light","electricity"]},{"name":"Circuit Board","inputs":["wire","metal","electricity"]},{"name":"Battery Pack","inputs":["electricity","metal","acid rain"]},{"name":"Power Bank","inputs":["battery pack","computer","wire"]},{"name":"Solar Charger","inputs":["solar cell","battery pack","sun"]},{"name":"Electric Scooter","inputs":["electricity","wheel","metal"]},{"name":"Electric Bicycle","inputs":["bicycle","battery pack","electricity"]},{"name":"Electric Train","inputs":["train","electricity","metal"]},{"name":"Maglev Train","inputs":["train","magnet","electricity"]},{"name":"Self-driving Car","inputs":["car","computer","sensor"]},{"name":"Electric Truck","inputs":["car","metal","battery pack"]},{"name":"Robot Vacuum","inputs":["roomba","computer","electricity"]},{"name":"Smart Refrigerator","inputs":["fridge","computer","electricity"]},{"name":"Smart Oven","inputs":["fire","computer","metal"]},{"name":"Coffee Machine","inputs":["water","electricity","coffee"]},{"name":"Water Purifier","inputs":["water","filter","electricity"]},{"name":"Air Purifier","inputs":["wind","filter","electricity"]},{"name":"Air Conditioner","inputs":["cold","wind","electricity"]},{"name":"Industrial Generator","inputs":["electricity","steam engine","metal"]},{"name":"Wind Farm","inputs":["wind turbine","electricity","field"]},{"name":"Solar Farm","inputs":["solar cell","sun","field"]},{"name":"Hydroelectric Dam","inputs":["dam","water","electricity"]},{"name":"Geothermal Plant","inputs":["geyser","steam","electricity"]},{"name":"Nuclear Reactor","inputs":["atomic bomb","metal","water"]},{"name":"Fusion Reactor","inputs":["sun","hydrogen","electricity"]},{"name":"Energy Grid","inputs":["electricity","city","wire"]},{"name":"Charging Station","inputs":["electricity","road","battery pack"]},{"name":"Smart Grid","inputs":["energy grid","computer","electricity"]},{"name":"Weather Station","inputs":["storm","computer","antenna"]},{"name":"Climate Sensor","inputs":["weather station","thermometer","computer"]},{"name":"Space Telescope","inputs":["telescope","space","computer"]},{"name":"Mars Rover","inputs":["robot","mars","wheel"]},{"name":"Space Probe","inputs":["spaceship","computer","satellite"]},{"name":"Orbital Station","inputs":["space station","solar cell","robot"]},{"name":"Moon Base","inputs":["moon","house","space station"]},{"name":"Lunar Rover","inputs":["moon","car","computer"]},{"name":"Asteroid Miner","inputs":["asteroid","robot","metal"]},{"name":"Starship","inputs":["spaceship","engineer","metal"]},{"name":"Warp Drive","inputs":["space","energy","engine"]},{"name":"Teleportation Gate","inputs":["portal","energy","computer"]},{"name":"Time Machine","inputs":["time","clock","electricity"]},{"name":"Cryogenic Chamber","inputs":["ice","human","metal"]},{"name":"Terraforming Machine","inputs":["planet","plant","computer"]},{"name":"Biosphere Dome","inputs":["plant","glass","house"]},{"name":"Vertical Farm","inputs":["farm","skyscraper","water"]},{"name":"Hydroponic Garden","inputs":["plant","water","electricity"]},{"name":"Aquaponics System","inputs":["fish","plant","water"]},{"name":"Automated Greenhouse","inputs":["greenhouse","robot","water"]},{"name":"Seed Bank","inputs":["seed","ice","bank"]},{"name":"Gene Sequencer","inputs":["DNA","computer","electricity"]},{"name":"Bioreactor","inputs":["bacteria","metal","electricity"]},{"name":"Synthetic Organ","inputs":["heart","robot","life"]},{"name":"Prosthetic Arm","inputs":["robot","human","metal"]},{"name":"Exoskeleton","inputs":["armor","robot","electricity"]},{"name":"Medical Scanner","inputs":["doctor","computer","light"]},{"name":"MRI Machine","inputs":["hospital","electricity","magnet"]},{"name":"Nanobot","inputs":["robot","metal","bacteria"]},{"name":"Nanofactory","inputs":["nanobot","factory","computer"]},{"name":"Cure Machine","inputs":["medicine","electricity","doctor"]},{"name":"Food Printer","inputs":["3d printer","food","water"]},{"name":"Automatic Bakery","inputs":["bakery","robot","electricity"]},{"name":"Drone Delivery","inputs":["drone","package","city"]},{"name":"Autonomous Ship","inputs":["boat","computer","electricity"]},{"name":"Submarine","inputs":["boat","metal","pressure"]},{"name":"Deep Sea Lab","inputs":["ocean","house","computer"]},{"name":"Ocean Cleanup Drone","inputs":["ocean","robot","plastic"]},{"name":"Desalination Plant","inputs":["sea","fire","metal"]},{"name":"Underwater City","inputs":["city","ocean","glass"]},{"name":"Floating City","inputs":["city","boat","metal"]},{"name":"Sky City","inputs":["city","cloud","metal"]},{"name":"Space Elevator","inputs":["space","metal","rope"]},{"name":"Orbital Ring","inputs":["space","ring","metal"]},{"name":"Meteor Shield","inputs":["force field","planet","metal"]},{"name":"Defense Drone","inputs":["drone","robot","metal"]},{"name":"Energy Shield","inputs":["energy","glass","armor"]},{"name":"Plasma Cannon","inputs":["plasma","metal","electricity"]},{"name":"Photon Blade","inputs":["light","sword","electricity"]},{"name":"Lightning Staff","inputs":["wand","electricity","metal"]},{"name":"Arcane Reactor","inputs":["magic","electricity","metal"]},{"name":"Mana Battery","inputs":["magic","energy","crystal ball"]},{"name":"Spellbook","inputs":["book","magic","paper"]},{"name":"Enchanted Armor","inputs":["armor","magic","metal"]},{"name":"Flying Carpet","inputs":["fabric","magic","wind"]},{"name":"Portal Engine","inputs":["magic","space","computer"]},{"name":"Crystal Forge","inputs":["crystal ball","fire","metal"]},{"name":"Elemental Golem","inputs":["golem","energy","stone"]},{"name":"Clockwork Golem","inputs":["golem","clock","metal"]},{"name":"Storm Engine","inputs":["storm","electricity","metal"]},{"name":"Volcano Drill","inputs":["volcano","tool","metal"]},{"name":"Lava Turbine","inputs":["lava","metal","wheel"]},{"name":"Earthquake Detector","inputs":["earthquake","computer","sensor"]},{"name":"Tsunami Warning System","inputs":["tsunami","weather station","computer"]},{"name":"Volcanic Observatory","inputs":["volcano","telescope","computer"]},{"name":"Aurora Generator","inputs":["aurora","electricity","glass"]},{"name":"Light Sculpture","inputs":["light","glass","statue"]},{"name":"Digital Art","inputs":["computer","paint","light"]},{"name":"Pixel Studio","inputs":["computer","paint","electricity"]},{"name":"Animation Studio","inputs":["computer","art","time"]},{"name":"Game Console","inputs":["computer","game","electricity"]},{"name":"Arcade Machine","inputs":["game console","light","metal"]},{"name":"VR Arcade","inputs":["virtual reality","game console","city"]},{"name":"Digital Museum","inputs":["museum","computer","glass"]},{"name":"Interactive Map","inputs":["map","computer","light"]},{"name":"AI Companion","inputs":["artificial intelligence","robot assistant","love"]},{"name":"Robot Orchestra","inputs":["robot","music","electricity"]},{"name":"Synthesizer","inputs":["music","electricity","computer"]},{"name":"Electric Guitar","inputs":["guitar","electricity","metal"]},{"name":"Music Streaming","inputs":["internet","music","computer"]},{"name":"Podcast Studio","inputs":["microphone","computer","sound"]},{"name":"Movie Projector","inputs":["light","film","electricity"]},{"name":"Cinema Dome","inputs":["glass","movie projector","house"]},{"name":"Electric Airship","inputs":["balloon","electricity","metal"]},{"name":"Weather Balloon","inputs":["air","balloon","sensor"]},{"name":"Flying Taxi","inputs":["helicopter","computer","car"]},{"name":"Hyperloop","inputs":["train","pressure","metal"]},{"name":"Smart Factory","inputs":["factory","computer","robot"]},{"name":"Automated Warehouse","inputs":["house","robot","computer"]},{"name":"Factory Drone","inputs":["drone","factory","computer"]},{"name":"Laser Printer","inputs":["printer","light","electricity"]},{"name":"Digital Currency","inputs":["money","internet","computer"]},{"name":"Crypto Wallet","inputs":["money","computer","electricity"]},{"name":"Blockchain Node","inputs":["computer","internet","ledger"]},{"name":"Mining Rig","inputs":["computer","electricity","diamond"]},{"name":"Smart Contract","inputs":["computer","law","internet"]},{"name":"Digital Marketplace","inputs":["market","internet","computer"]},{"name":"Cybernetic Eye","inputs":["eye","robot","camera"]},{"name":"Neural Interface","inputs":["brain","microchip","electricity"]},{"name":"Mind Reader","inputs":["neural interface","sound","computer"]},{"name":"Dream Recorder","inputs":["sleep","computer","camera"]},{"name":"Memory Archive","inputs":["brain","computer","book"]},{"name":"Digital Twin","inputs":["computer","human","mirror"]},{"name":"Virtual World","inputs":["computer","planet","light"]},{"name":"Simulation Engine","inputs":["computer","time","planet"]},{"name":"Reality Editor","inputs":["simulation engine","magic","computer"]},{"name":"Infinity Engine","inputs":["time","space","energy"]}];
+const advancedRecipes=new Map();const advancedIds=new Set();const canonical=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const sourceId=s=>s==='air'?'wind':s==='wind'?'gale':canonical(s);
+function currentSlots(){return slots.slice(0,mixMode)}
+
+try{const saved=JSON.parse(localStorage.getItem('pixel-alchemy-v1')||'null');if(Array.isArray(saved)){for(const id of saved)owned.add(id)}}catch(_){}
+const $=s=>document.querySelector(s);const $$=s=>Array.from(document.querySelectorAll(s));
+function save(){try{localStorage.setItem('pixel-alchemy-v1',JSON.stringify([...owned]))}catch(_){}}
+function esc(s){return String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function count(){const n=[...owned].filter(id=>byId[id]).length;$('#inventory-count').textContent=String(n).padStart(2,'0');$('#top-fraction').textContent=String(n).padStart(2,'0')+' / '+items.length;$('#catalog-found').textContent=String(n).padStart(2,'0');$('#catalog-total').textContent=items.length;$('#top-progress').style.width=(n/items.length*100)+'%'}
+function inventory(){const q=$('#search').value.trim().toLowerCase();const ids=order.filter(id=>owned.has(id)&&(filter==='all'||(filter==='core'?base.includes(id):!base.includes(id)))&&byId[id].name.toLowerCase().includes(q));$('#inventory').innerHTML=ids.length?ids.map(id=>`<button class="element-card${slots.includes(id)?' selected':''}" draggable="true" data-pick="${id}" aria-label="Choose ${byId[id].name}" style="--halo:${byId[id].color}22"><canvas width="96" height="96" data-element="${id}"></canvas><div><span class="element-name">${byId[id].name}</span><span class="element-type">${byId[id].type}</span></div></button>`).join(''):`<div class="inventory-empty">No elements found.<br>Try another search.</div>`;$$('[data-pick]').forEach(el=>{el.addEventListener('click',()=>pick(el.dataset.pick));el.addEventListener('dragstart',e=>{e.dataTransfer.effectAllowed='copy';e.dataTransfer.setData('text/plain',el.dataset.pick)});});}
+function catalog(){const ids=order.filter(id=>view==='all'||(view==='found'?owned.has(id):view==='advanced'?advancedIds.has(id):!owned.has(id)));$('#catalog-body').innerHTML=ids.length?ids.map((id,i)=>{const x=byId[id],unlocked=owned.has(id),idx=String(order.indexOf(id)+1).padStart(2,'0');return unlocked?`<button class="catalog-card unlocked" data-catalog="${id}" title="Add ${x.name} to the mixer"><span class="id-tag">${idx}</span><canvas width="96" height="96" data-element="${id}"></canvas><span>${x.name}</span></button>`:`<div class="catalog-card locked" title="Not yet discovered"><span class="id-tag">${idx}</span><div class="lock-icon">??</div><span class="lock-label">UNDISCOVERED</span></div>`}).join(''):`<div class="catalog-empty">There are no elements in this category yet.</div>`;$$('[data-catalog]').forEach(el=>el.addEventListener('click',()=>pick(el.dataset.catalog)));}
+function drawSlot(i){const el=$('#slot'+i),id=slots[i],c=el.querySelector('canvas');el.classList.toggle('has-element',!!id);if(id){c.style.display='block';c.dataset.element=id;el.querySelector('.slot-label').textContent=byId[id]?.name||id;el.setAttribute('aria-label','Slot '+(i+1)+': '+byId[id].name+', click to remove');}else{c.style.display='none';delete c.dataset.element;el.querySelector('.slot-label').textContent='';el.setAttribute('aria-label','Slot '+(i+1)+': empty, click to select a slot');}}
+function footer(){const r=last;const icon=$('#result-icon');icon.innerHTML=r?`<canvas width="96" height="96" data-element="${r.id}"></canvas>`:'<span class="unknown">?</span>';$('#result-overline').textContent=r?(r.fresh?'NEW DISCOVERY UNLOCKED':'SUCCESSFUL COMBINATION'):'AWAITING EXPERIMENT';$('#result-name').textContent=r?byId[r.id].name:'Unknown result';$('#result-desc').textContent=r?r.ingredients.map(x=>byId[x].name).join(' + '):currentSlots().every(Boolean)?currentSlots().map(x=>byId[x].name).join(' + ')+' = ???':'Choose '+mixMode+' ingredients';$('#mix').disabled=!currentSlots().every(Boolean);}
+function render(){count();inventory();catalog();drawSlot(0);drawSlot(1);drawSlot(2);footer()}
+function pick(id){if(merging||!owned.has(id))return;const empty=currentSlots().findIndex(x=>!x);if(empty>=0){slots[empty]=id;next=(empty+1)%mixMode}else{slots[next]=id;next=(next+1)%mixMode}last=null;render()}
+function toast(label,name,sub){$('#toast-label').textContent=label;$('#toast-name').textContent=name;$('#toast-sub').textContent=sub;const t=$('#toast');t.classList.remove('show');void t.offsetWidth;t.classList.add('show');}
+let burstAt=0,burstColor='#a1e6d6';
+let merging=false, mergePulse=null;
+const easeMix=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+function combine(){
+ if(merging||!currentSlots().every(Boolean))return;
+ const ingredients=currentSlots(),[a,b]=ingredients,matched=mixMode===3?advancedRecipes.get([...ingredients].sort().join('+')):recipes.get(key(a,b)),result=Array.isArray(matched)?matched[0]:matched,extras=Array.isArray(matched)?matched.slice(1):[],fresh=!!result&&!owned.has(result);
+ merging=true;
+ $('#mix').disabled=true; $('#mix').innerHTML='TRANSMUTING <span class="arrow">✧</span>';
+ $('#clear').disabled=true;
+ const lab=$('#lab'),area=$('.craft-area');lab.classList.add('is-mixing');
+ const stageRect=area.getBoundingClientRect(), target={x:area.clientWidth*.5,y:area.clientHeight*.46};
+ const origins=ingredients.map((_,i)=>{const r=$('#slot'+i).querySelector('canvas').getBoundingClientRect();return{x:r.left-stageRect.left+r.width/2,y:r.top-stageRect.top+r.height/2}});
+ const layer=document.createElement('div');layer.className='merge-layer';area.append(layer);
+ const actors=ingredients.map(id=>{const node=document.createElement('div');node.className='merge-actor';node.innerHTML='<canvas width="96" height="96" data-element="'+esc(id)+'"></canvas>';layer.append(node);return node});
+ let reveal=null;
+ if(result){reveal=document.createElement('div');reveal.className='merge-reveal';reveal.innerHTML='<canvas width="96" height="96" data-element="'+esc(result)+'"></canvas><div class="reveal-name">'+esc(byId[result].name.toUpperCase())+'</div>';layer.append(reveal)}
+ const speed=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches?0.3:1;
+ const total=(result?3350:1700)*speed,impactTime=690*speed;
+ mergePulse={start:performance.now(),x:target.x,y:target.y,state:'approach',result:!!result,color:result?byId[result].color:'#ff648e'};
+ let hit=false;
+ const animate=now=>{
+  const age=now-mergePulse.start; const approach=easeMix(Math.max(0,Math.min(1,age/impactTime)));
+  if(age>=impactTime&&!hit){
+   hit=true;mergePulse.state=result?'success':'fail';burstAt=performance.now();burstColor=result?byId[result].color:'#fa5e91';
+   lab.classList.remove('merge-impact','merge-failed');void lab.offsetWidth;lab.classList.add(result?'merge-impact':'merge-failed');
+   if(result){owned.add(result);for(const extra of extras)owned.add(extra);save();last={id:result,a,b,ingredients,fresh};history.unshift(last);history=history.slice(0,8);render();$('#mix').disabled=true;
+    toast(fresh?'✦ NEW DISCOVERY!':'RECIPE CONFIRMED',byId[result].name,extras.length?'Also unlocked '+extras.length+' related creation(s)':fresh?'Added to your grimoire':'Already discovered — try another pairing');
+   } else {last=null;footer();$('#mix').disabled=true;toast('NO REACTION','Unstable pairing','The elements resist this combination');}
+  }
+  actors.forEach((node,i)=>{
+   let x,y,scale=1,opacity=1,turn=0;
+   if(age<impactTime){x=origins[i].x+(target.x-origins[i].x)*approach;y=origins[i].y+(target.y-origins[i].y)*approach-Math.sin(approach*Math.PI)*16*speed;scale=1-approach*.12;turn=(i?1:-1)*approach*34;}
+   else if(result){x=target.x+(i?1:-1)*Math.min(14,(age-impactTime)*.06);y=target.y;scale=.85+Math.min(.4,(age-impactTime)*.001);opacity=Math.max(0,1-(age-impactTime)/230);turn=(i?1:-1)*40;}
+   else{const away=easeMix(Math.max(0,Math.min(1,(age-impactTime-90*speed)/(760*speed))));x=target.x+(origins[i].x-target.x)*away;y=target.y+(origins[i].y-target.y)*away-18*Math.sin(away*Math.PI);scale=.86+away*.14;turn=(i?1:-1)*Math.sin(away*Math.PI)*-28;}
+   node.style.transform='translate3d('+x+'px,'+y+'px,0) scale('+scale+') rotate('+turn+'deg)';node.style.opacity=String(opacity);
+  });
+  if(reveal){const u=Math.max(0,Math.min(1,(age-impactTime-80*speed)/(560*speed)));const fade=Math.max(0,Math.min(1,(total-age)/(420*speed)));reveal.style.transform='translate3d('+target.x+'px,'+(target.y-10*speed)+'px,0) scale('+(0.5+.55*easeMix(u))+')';reveal.style.opacity=String(easeMix(u)*fade)}
+  if(age<total){requestAnimationFrame(animate)}else{
+   merging=false;mergePulse=null;layer.remove();lab.classList.remove('is-mixing','merge-impact','merge-failed');$('#mix').innerHTML=mixMode===3?'SYNTHESIZE <span class="arrow">✧</span>':'MIX ELEMENTS <span class="arrow">→</span>';$('#clear').disabled=false;footer();
+  }
+ };
+ requestAnimationFrame(animate);
+}
+
+$$('[data-filter]').forEach(el=>el.onclick=()=>{filter=el.dataset.filter;$$('[data-filter]').forEach(e=>e.classList.toggle('active',e===el));inventory()});
+$$('[data-view]').forEach(el=>el.onclick=()=>{view=el.dataset.view;$$('[data-view]').forEach(e=>e.classList.toggle('active',e===el));catalog()});
+function setMode(mode){if(merging)return;mixMode=mode;slots=[null,null,null];next=0;last=null;$('#lab').classList.toggle('advanced-mode',mode===3);$('#mode-normal').classList.toggle('active',mode===2);$('#mode-advanced').classList.toggle('active',mode===3);$('#lab-title').textContent=mode===3?'The advanced synthesis table':'The mixing table';$('#craft-hint').innerHTML=mode===3?'✦ Three ingredients. One extraordinary invention. ✦':'✧ Two ingredients. Infinite possibilities. ✧';$('#mix').innerHTML=mode===3?'SYNTHESIZE <span class="arrow">✧</span>':'MIX ELEMENTS <span class="arrow">→</span>';render()}
+$('#mode-normal').onclick=()=>setMode(2);$('#mode-advanced').onclick=()=>setMode(3);
+$('#search').addEventListener('input',inventory);$('#mix').addEventListener('click',combine);$('#clear').addEventListener('click',()=>{if(merging)return;slots=[null,null,null];next=0;last=null;render()});
+$$('.slot').forEach(el=>{const idx=+el.dataset.slot;el.addEventListener('dragover',e=>{e.preventDefault();e.dataTransfer.dropEffect='copy';el.classList.add('dragover')});el.addEventListener('dragleave',()=>el.classList.remove('dragover'));el.addEventListener('drop',e=>{e.preventDefault();if(merging)return;el.classList.remove('dragover');const id=e.dataTransfer.getData('text/plain');if(owned.has(id)){slots[idx]=id;next=(idx+1)%mixMode;last=null;render()}});el.addEventListener('click',()=>{if(merging)return;if(slots[idx]){slots[idx]=null;next=idx;last=null;render()}else{next=idx;$('#search').focus()}})});
+$('#reset').addEventListener('click',()=>{if(merging)return;if(confirm('Reset all discoveries and return to the four basic elements?')){owned=new Set(base);slots=['fire','water',null];next=0;last=null;history=[];save();render();}});
+$('#help').addEventListener('click',()=>{$('#help-dialog').classList.add('visible');$('#close-help').focus()});$('#close-help').addEventListener('click',()=>$('#help-dialog').classList.remove('visible'));$('#help-dialog').addEventListener('click',e=>{if(e.target.id==='help-dialog')e.currentTarget.classList.remove('visible')});document.addEventListener('keydown',e=>{if(e.key==='Escape')$('#help-dialog').classList.remove('visible');if(e.key==='Enter'&&e.target.tagName!=='INPUT'&&!$('#help-dialog').classList.contains('visible')&&e.target.tagName!=='BUTTON')combine()});
+// Pixel rendering: 72 x 72 logical pixels, drawn with nearest-neighbor CSS scaling.
+// Each effect is a deterministic function of elapsed time, using hand-shaped silhouettes,
+// limited color ramps, stepping motion and layered particles (PixelFX-inspired approach).
+const W=72,H=72,TAU=Math.PI*2;
+const P={
+ px(c,x,y,col,s=1,a=1){if(!col)return;c.globalAlpha=a;c.fillStyle=col;c.fillRect(Math.round(x),Math.round(y),Math.max(1,s|0),Math.max(1,s|0));c.globalAlpha=1},
+ rect(c,x,y,w,h,col,a=1){c.globalAlpha=a;c.fillStyle=col;c.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h));c.globalAlpha=1},
+ line(c,x1,y1,x2,y2,col,s=1){let d=Math.max(Math.abs(x2-x1),Math.abs(y2-y1));if(!d){this.px(c,x1,y1,col,s);return;}for(let i=0;i<=d;i++){const u=i/d;this.px(c,x1+(x2-x1)*u,y1+(y2-y1)*u,col,s)}},
+ disk(c,cx,cy,r,col,edge){for(let y=Math.floor(cy-r);y<=Math.ceil(cy+r);y++)for(let x=Math.floor(cx-r);x<=Math.ceil(cx+r);x++){let rr=(x-cx)*(x-cx)+(y-cy)*(y-cy);if(rr<=r*r){this.px(c,x,y,edge&&rr>(r-1.7)*(r-1.7)?edge:col)}}},
+ arc(c,cx,cy,rx,ry,a,b,col,th=2){for(let p=a;p<b;p+=.065){let x=cx+Math.cos(p)*rx,y=cy+Math.sin(p)*ry;this.px(c,x,y,col,th)}}
+};
+const px=(c,x,y,col,s=1,a=1)=>P.px(c,x,y,col,s,a),rect=(c,x,y,w,h,col,a=1)=>P.rect(c,x,y,w,h,col,a),line=(c,x,y,xx,yy,col,s=1)=>P.line(c,x,y,xx,yy,col,s),disk=(c,x,y,r,col,edge)=>P.disk(c,x,y,r,col,edge),arc=(c,x,y,rx,ry,a,b,col,s=2)=>P.arc(c,x,y,rx,ry,a,b,col,s);
+const rnd=n=>{let x=Math.sin(n*127.1+45.4)*43758.5453;return x-Math.floor(x)};
+function mote(c,t,i,opts={}){let ang=rnd(i+6)*TAU,phase=rnd(i+14)*TAU,speed=opts.speed||.6,rad=(opts.radius||20)*(.5+rnd(i+24)*.5),x=36+Math.cos(ang+t*speed+phase)*rad,y=36+Math.sin(ang+t*speed+phase)*rad*(opts.squish||.7);px(c,x,y,opts.color||'#a9f1dc',i%5===0?2:1,.35+.55*Math.abs(Math.sin(t*2+phase)))}
+function flame(c,t,x=36,y=55,m=1){let q=t*5;const ramps=['#55272d','#b64036','#f47735','#ffba4c','#ffeeb0'];for(let k=0;k<5;k++){for(let yy=0;yy<31-k*3;yy+=2){let v=yy/(31-k*3),ww=(12-k*2)*(1-v)+2,xx=x+Math.sin(q*1.3+yy*.33+k)*2.2+Math.sin(q*.45+k*3)*1.2;rect(c,xx-ww/2,y-yy-k*1.4,ww,2.5,ramps[k]);}}for(let i=0;i<12;i++){let f=(t*(7+rnd(i)*9)+rnd(i*31)*32)%34;let xx=x+(rnd(i+92)-.5)*23+Math.sin(t*2+i)*3;px(c,xx,y-f-11, i%3===0?'#ffe6a0':'#ee8a46',i%4===0?2:1,1-f/43)}}
+function water(c,t,ox=0,oy=0){let shift=Math.sin(t*2.2)*2;for(let row=0;row<20;row+=2){const yy=36+row+oy,half=7+Math.sin(row/19*Math.PI)*15;rect(c,36-half+ox,yy,half*2,2,row%4===0?'#328fbc':'#52c3d7');}rect(c,19+ox,45+oy,34,5,'#225b94');arc(c,36+ox,43+oy,17,9,.25,Math.PI*1.65,'#95ecf2',2);arc(c,36+ox,43+oy,12,6,Math.PI+.2,TAU-.3,'#e0ffff',1);for(let i=0;i<9;i++){let x=19+i*4+Math.sin(t*2+i)*2;let y=44+Math.sin(i*.9+t*2.8)*3;px(c,x+ox,y+oy,i%2?'#c6f7ee':'#74d9ec',2)}}
+function ground(c,t){const rows=[[24,49,24,7,'#524b45'],[21,43,30,8,'#84755a'],[18,39,34,7,'#b49b74'],[24,35,22,5,'#d5bd85']];rows.forEach(a=>rect(c,...a));for(let i=0;i<17;i++){let x=20+rnd(i*4)*32,y=42+rnd(i*19)*13;px(c,x,y,i%3===0?'#d4b982':'#60534c',i%4===0?3:2)}for(let i=0;i<5;i++){let x=24+i*5,y=34+(i%2)*2;rect(c,x,y,2,4,i%2?'#a2ba81':'#699375')}for(let i=0;i<5;i++){let x=21+i*7,y=52+Math.sin(i+t)*2;px(c,x,y,'#75654e',2)}}
+function cloud(c,t,ox=0,oy=0,dark=false){let dx=Math.sin(t*.8)*2+ox,dy=Math.sin(t*1.2)*1+oy;const rim=dark?'#4d607d':'#7c9ea9',fill=dark?'#71809d':'#bccfce',light=dark?'#a0abc0':'#e7f0e7';disk(c,27+dx,36+dy,11,fill,rim);disk(c,36+dx,30+dy,15,fill,rim);disk(c,47+dx,36+dy,10,fill,rim);rect(c,19+dx,37+dy,37,10,fill);rect(c,23+dx,42+dy,29,4,rim);rect(c,30+dx,23+dy,12,3,light);rect(c,22+dx,33+dy,5,2,light);rect(c,42+dx,29+dy,8,2,light)}
+function rock(c,t,x=36,y=45,s=1){const R=(xx,yy,w,h,col)=>rect(c,x+xx*s,y+yy*s,w*s,h*s,col);R(-17,-2,34,12,'#485a66');R(-14,-10,27,20,'#687984');R(-10,-15,18,6,'#8f9ca2');R(-8,-18,12,4,'#adbac0');R(-14,-7,5,12,'#4a5866');R(8,-4,7,11,'#455869');R(-5,-11,11,2,'#bec7c5');R(-8,0,3,3,'#aab6b6');R(1,5,9,2,'#89969c')}
+function bolt(c,shift=0){const pts=[[39,14],[30,31],[39,31],[32,50],[47,28],[37,28],[44,14]];for(let j=0;j<pts.length-1;j++){line(c,pts[j][0]+shift,pts[j][1],pts[j+1][0]+shift,pts[j+1][1],'#ad8c51',5);line(c,pts[j][0]+shift,pts[j][1],pts[j+1][0]+shift,pts[j+1][1],'#ffed9f',2)}for(let i=0;i<7;i++){let a=i*TAU/7,r=14+rnd(i)*6;px(c,36+Math.cos(a)*r+shift,35+Math.sin(a)*r,'#fff5c2',2)}}
+function tree(c,x,y,s=1){const R=(a,b,w,h,col)=>rect(c,x+a*s,y+b*s,w*s,h*s,col);R(-2,-1,4,12,'#805c4d');R(-9,-7,18,8,'#245d50');R(-12,-13,24,10,'#358666');R(-8,-20,17,10,'#54a87b');R(-4,-23,8,4,'#9bce90');R(-11,-9,4,3,'#8bd498');R(5,-15,4,2,'#a5d8a8')}
+
+function genericCore(c,id,t){
+ const info=byId[id],hex=info?.color||'#cf9de6',h=[...id].reduce((n,ch)=>(n*31+ch.charCodeAt(0))>>>0,17),ph=Math.floor(t*9)/9;
+ const machine=id.startsWith('adv-')||/robot|engine|printer|computer|train|camera|electric|metal|machine|clock|tool|rocket|car|turbine/.test(id);
+ const organic=/plant|tree|leaf|flower|forest|garden|animal|fish|human|bird|grass|moss|rose|seed/.test(id);
+ const cosmic=/space|planet|star|galaxy|sun|moon|aurora|light|energy|magic|portal|nebula|nova/.test(id);
+ const liquid=/water|sea|ocean|river|pond|lake|rain|ice|fog|snow|juice|oil|steam/.test(id);
+ const q=1+Math.round(Math.sin(t*2+(h%17)));
+ if(machine){
+  // Iconic pixel-machinery silhouette: dark chassis, glowing glass face, conductive rails.
+  rect(c,20,24,32,29,'#241c32');rect(c,22,22,28,29,hex);rect(c,25,25,22,18,'#32284d');
+  rect(c,28,28,16,11,'#557086');rect(c,29,29,14,8,'#74c4d3');rect(c,31,30,9,3,'#d8f8ef');
+  rect(c,26,46,20,3,'#2d213e');rect(c,32,50,8,5,'#75638b');rect(c,27,55,18,3,'#ad9bc7');
+  for(let i=0;i<6;i++){rect(c,17+i*7,19,3,4,i%2?'#c9a4dd':'#8f87b4');rect(c,17+i*7,51,3,4,'#82749d')}
+  for(let i=0;i<4;i++)px(c,30+i*4,34+Math.sin(ph*4+i)*2,i%2?'#fff5d4':'#a5f0f7',2);
+ }else if(organic){
+  rect(c,34,34,4,27,'#684a5a');line(c,35,45,22,35,'#659b76',2);line(c,36,42,48,31,'#6cba8a',2);
+  for(let i=0;i<6;i++){let x=22+(i*17%29),y=28+(i*13%17)+Math.sin(ph*2+i)*2;disk(c,x,y,5+(i%3),i%2?hex:'#65c69d','#376458')}
+  for(let i=0;i<5;i++)px(c,24+i*5,23+(i*9%18)+Math.cos(ph*2+i)*2,'#e4d2b7',2);
+ }else if(cosmic){
+  disk(c,36,36,17,'#332342',hex);disk(c,35,34,11,hex,'#d2b7f5');disk(c,32,30,5,'#fff7df');
+  for(let i=0;i<11;i++){const a=(i/11)*TAU+ph*.5;const x=36+Math.cos(a)*23,y=36+Math.sin(a)*19;px(c,x,y,i%3?'#a7e4ef':'#fff4bf',i%4===0?2:1)}
+ }else if(liquid){
+  for(let j=0;j<7;j++){const y=31+j*4,w=13+Math.round(Math.sin(j+t)*4);rect(c,36-w,y,2*w,4,j%2?hex:'#568baf')}
+  arc(c,36,42,20,6,ph*.6,ph*.6+4,'#b1f0f5',1);
+  for(let i=0;i<7;i++)px(c,21+i*5,25+((i*9+ph*5)%31),'#e1ffff',2);
+ }else{
+  // Faceted mineral / crafted object rather than a blank label.
+  rect(c,25,24,22,34,'#30253a');rect(c,23,32,26,23,hex);rect(c,27,23,18,32,'#8f79a5');
+  rect(c,30,26,12,19,hex);line(c,30,26,36,20,'#f7e1d0',2);line(c,36,20,45,26,'#deb8ec',2);
+  rect(c,32,30,5,18,'#efe2ee');rect(c,38,34,5,15,'#6d5a86');
+  for(let i=0;i<7;i++)px(c,21+(h+i*13)%30,21+(h+i*9)%32,i%2?'#f2d4fb':'#b6c8f4',1+(i%4===0));
+ }
+ // Deterministic orbit sparks and a subtle ground reflection.
+ for(let i=0;i<9;i++){const phase=i*2.399+h*.013,theta=phase+ph*(.3+(i%3)*.1),r=20+(i%3)*7;
+  px(c,36+Math.cos(theta)*r,37+Math.sin(theta)*r*.7, i%3===0?'#fff1d0':hex,i%4===0?2:1);
+ }
+ rect(c,25,61,22+q*2,1,hex,.42);
+}
+
+function drawArt(c,id,time){const t=time,seq=Math.floor(t*12)/12;c.clearRect(0,0,W,H);let ctx=c;const jitter=seq;
+switch(id){
+case 'earth':ground(ctx,t);for(let i=0;i<6;i++){let x=17+rnd(i*7)*37,y=34+rnd(i*2)*2;px(ctx,x,y,'#d6ce9e',1)}break;
+case 'water':water(ctx,t);for(let i=0;i<6;i++){let x=23+rnd(i*3)*28,y=30+(t*(3+i%3)+i*8)%12;px(ctx,x,y,'#95e7ed',2,.3+.6*rnd(i))}break;
+case 'wind':for(let i=0;i<3;i++){let yy=26+i*11;arc(ctx,35+Math.sin(t+i)*3,yy,16+i*2,5+i*2, .25+t*.7+i,4.4+t*.7+i,['#9de4d5','#6caaa7','#d3efe3'][i],2)}for(let i=0;i<13;i++)mote(ctx,t,i,{color:i%2?'#98d6d4':'#d1f1e2',radius:24,speed:.85});break;
+case 'fire':flame(ctx,jitter);break;
+case 'steam':for(let i=0;i<7;i++){let f=(t*9+rnd(i)*55)%43;let x=30+Math.sin(t*1.3+i*2)*9+(rnd(i*9)-.5)*7;let y=57-f;disk(ctx,x,y,5+(i%3)*2,'#a4c9c6','#5e8990');rect(ctx,x-2,y-3,3,2,'#e7f6eb',.8)}arc(ctx,36,54,15,4,0,Math.PI*1.8,'#badeda',1);break;
+case 'lava':rock(ctx,t,36,44,1);for(let i=0;i<5;i++){let x=25+i*6;rect(ctx,x,42+Math.sin(i+t*2)*2,3,12,'#bf482e');rect(ctx,x+1,40+Math.sin(i+t*2)*2,2,8,i%2?'#ffd36a':'#ff832e')}for(let i=0;i<9;i++){let y=45-((t*(10+i%2*5)+rnd(i*9)*34)%35);px(ctx,28+(rnd(i*3)-.5)*25,y,'#ffcc69',i%3?1:2)}break;
+case 'mud':disk(ctx,36,51,17,'#654c3b','#9c7257');disk(ctx,34,45,12,'#9b785b','#614835');rect(ctx,20,50,33,4,'#ad8a69');for(let i=0;i<7;i++){let x=24+i*4,y=45+Math.sin(i*2+t*3)*3;px(ctx,x,y,i%2?'#e5c797':'#745542',2)}for(let i=0;i<3;i++){let y=49-((t*6+i*8)%26);px(ctx,31+i*6+Math.sin(t*2+i)*4,y,'#c89a6c',2)}break;
+case 'energy':for(let i=0;i<4;i++)arc(ctx,36,36,18+i*2,7+i*3,t*(i%2?1:-1)+i,t*(i%2?1:-1)+i+3.4,i%2?'#dce8a1':'#9ac5aa',1);disk(ctx,36,36,6,'#fff4ae','#dfb251');for(let i=0;i<10;i++)mote(ctx,t,i,{color:i%2?'#ffdf81':'#f5f4be',radius:25,speed:1.7});break;
+case 'dust':for(let j=0;j<4;j++)arc(ctx,35,36,10+j*5,5+j*3,t*.8+j,t*.8+j+2.5,j%2?'#bba272':'#e1cb98',1);for(let i=0;i<18;i++)mote(ctx,t,i,{color:i%3?'#d3b681':'#8d775a',radius:25,speed:.7});break;
+case 'rain':for(let i=0;i<13;i++){let x=17+rnd(i*7)*41,y=13+((t*(19+i%3*6)+rnd(i+5)*55)%47);line(ctx,x,y,x-2,y+6,i%2?'#82cfec':'#b1eaf4',1)}arc(ctx,36,55,20,4,0,Math.PI,'#62bad0',2);arc(ctx,36,55,14,3,0,Math.PI,'#bbebef',1);break;
+case 'cloud':cloud(ctx,t);break;
+case 'stone':rock(ctx,t);break;
+case 'brick':for(let j=0;j<3;j++){for(let i=0;i<2;i++){let x=16+i*19+(j%2?-7:0),y=29+j*10;rect(ctx,x,y,18,9,'#5b3e39');rect(ctx,x+1,y+1,16,7,j%2?'#bc745b':'#d58a69');rect(ctx,x+2,y+2,9,2,'#e5ac84');rect(ctx,x+14,y+5,2,2,'#925b4a')}}break;
+case 'plant':rect(ctx,35,39,3,21,'#58895c');line(ctx,36,49,24,42,'#72ae69',2);line(ctx,36,44,47,34,'#6eae78',2);disk(ctx,25,41,6,'#4f9965','#2f6f55');disk(ctx,46,34,7,'#5dac72','#317b5a');rect(ctx,42,30,5,3,'#bae29c');disk(ctx,36,25,6,'#d4a5a1','#ba7379');disk(ctx,36,25,3,'#ffdb8e');for(let i=0;i<4;i++)px(ctx,24+i*8,53+Math.sin(t+i)*2,'#94cc75',2);break;
+case 'ash':for(let i=0;i<17;i++){let x=16+rnd(i*3)*40+Math.sin(t+i)*3,y=15+(t*(5+rnd(i)*6)+rnd(i*8)*51)%45;rect(ctx,x,y,2+(i%3===0),2,i%3?'#9f9ba2':'#d0bac0',.4+.5*rnd(i+2))}break;
+case 'forest':tree(ctx,22,38,.85);tree(ctx,47,37,.8);tree(ctx,35,44,1.08);break;
+case 'lake':for(let j=0;j<6;j++){let y=35+j*4,w=14+j*3;rect(ctx,36-w,y,w*2,4,j%2?'#448eb3':'#4389a0')}for(let i=0;i<4;i++)arc(ctx,36,46,10+i*6,2+i*1.5,0,Math.PI*1.8,i%2?'#9de6eb':'#74d1d7',1);for(let i=0;i<7;i++)px(ctx,22+i*5,39+Math.sin(t*3+i)*6,'#d2fcf2',2);break;
+case 'sun':disk(ctx,36,36,14,'#ffc966','#b67d39');disk(ctx,34,33,9,'#ffdf8d');for(let i=0;i<12;i++){const a=i*TAU/12+t*.25,x=36+Math.cos(a)*22,y=36+Math.sin(a)*22;line(ctx,x,y,x+Math.cos(a)*(4+Math.sin(t*2+i)*2),y+Math.sin(a)*(4+Math.sin(t*2+i)*2),i%2?'#ffad53':'#ffe29b',2)}px(ctx,32,29,'#fff1bf',3);break;
+case 'storm':cloud(ctx,t,0,-4,true);if(Math.sin(t*5)>-.1)bolt(ctx,Math.sin(t*2)*3);for(let i=0;i<5;i++){let x=23+i*6,y=45+(t*16+i*9)%20;line(ctx,x,y,x-2,y+5,'#809dce',1)}break;
+case 'mountain':for(let y=27;y<57;y++){let h=(y-26),w=h*.8;rect(ctx,36-w,y,w*2,1,y<38?'#bfc8cb':y<48?'#687e85':'#4b6471')}for(let y=26;y<38;y++){let w=(y-25)*.82;rect(ctx,36-w,y,w*1.2,1,'#e5e8e5')}for(let i=0;i<7;i++)px(ctx,18+i*5,56,'#738b7b',3);break;
+case 'geyser':for(let i=0;i<16;i++){let h=(t*17+i*5)%48,x=36+Math.sin(t+i*1.8)*((i%3)*5);rect(ctx,x,55-h,2+(i%4===0),3,i%2?'#95e3e8':'#d7f9f5')}arc(ctx,36,54,20,4,0,Math.PI*1.8,'#66b8c9',2);break;
+case 'lightning':bolt(ctx,Math.sin(t*3)*2);for(let i=0;i<8;i++)mote(ctx,t,i,{color:'#ffebba',radius:22,speed:1.7});break;
+case 'river':for(let j=0;j<7;j++){let y=21+j*6,x=35+Math.sin(j*.8+t*1.6)*7;rect(ctx,x-10,y,21,6,j%2?'#428fb9':'#5ac5d4');rect(ctx,x-4+Math.sin(t*3+j)*3,y+1,9,1,'#d5f8f0')}break;
+case 'wave':for(let y=30;y<55;y++){let h=y-30,x=22+Math.sin(h*.15+t*1.5)*4;rect(ctx,x,y,28-h*.5,2,y<38?'#c2eced':y<47?'#60c1d3':'#327da6')}for(let i=0;i<9;i++){let x=19+i*4,y=32+Math.sin(t*2+i)*4;px(ctx,x,y,i%3?'#d8f9ef':'#80d4df',2)}break;
+case 'fog':for(let j=0;j<4;j++){let y=29+j*9,x=Math.sin(t*.6+j)*5;for(let i=0;i<3;i++)disk(ctx,24+i*10+x,y,7,j%2?'#a6bbc5':'#8cabb4','#657d8f');rect(ctx,15+x,y+2,42,3,'#cbd5d7',.7)}break;
+case 'sand':for(let j=0;j<12;j++){let y=40+j*1.6,w=5+j*1.5;rect(ctx,36-w+Math.sin(t*.3)*2,y,2*w,2,j%2?'#d5ac72':'#b7915d')}for(let i=0;i<15;i++)px(ctx,22+rnd(i)*28,33+rnd(i*4)*27,i%3?'#f0d8a7':'#927758',1+(i%3===0));break;
+case 'glass':for(let y=19;y<=55;y++){let v=Math.abs(y-37),w=16-v*.6;rect(ctx,36-w,y,w*2,1,y%3===0?'#6dadba':'#85cfcd',.5)}line(ctx,36,17,21,36,'#dbfaf1',2);line(ctx,21,36,36,56,'#7fb8c9',2);line(ctx,36,56,51,36,'#d5fbf5',2);line(ctx,51,36,36,17,'#88d7d7',2);line(ctx,36,17,36,56,'#c6f3ee',1);for(let i=0;i<5;i++)px(ctx,20+i*7,19+(i*9)%33,'#e1ffff',2,.6+.4*Math.sin(t*2+i));break;
+default:genericCore(ctx,id,t);break;
+}
+}
+
+// Premium arcane renderer. Visuals are generated frame by frame, not sprite images.
+// The original element silhouette is preserved and combined with a soft additive glow
+// and fine 1 px spell geometry on an independent 96px drawing buffer.
+const spriteCache=new Map();
+const ELEMENT_HUES={earth:['#eed3aa','#ae85e7','#ffedc6'],water:['#7ceef8','#588bea','#d0ffff'],wind:['#b2ffed','#9e8cff','#f1fff4'],fire:['#ffb96b','#f96d55','#fff1b4'],steam:['#def2fa','#be9efc','#ffffff'],lava:['#ff8c52','#e94972','#ffe4a0']};
+function ringPixels(ctx,x,y,rx,ry,a0,a1,col,sz=1,alpha=1){ctx.fillStyle=col;ctx.globalAlpha=alpha;for(let a=a0;a<a1;a+=Math.max(.014,1/Math.max(12,rx))){const px=Math.round(x+Math.cos(a)*rx),py=Math.round(y+Math.sin(a)*ry);ctx.fillRect(px,py,sz,sz)}ctx.globalAlpha=1}
+function shinePixel(ctx,x,y,col= '#f8e6ff',s=1){ctx.fillStyle=col;ctx.fillRect(Math.round(x),Math.round(y),s,s)}
+function premiumAura(ctx,id,t){
+ const colors=ELEMENT_HUES[id]||[byId[id].color,'#aa7cfa','#fff2f9'];
+ const [bright,mid,hot]=colors;const cx=48,cy=45;
+ const phase=(t*.29+(order.indexOf(id)*.16))%6.283;
+ const tstep=Math.floor(t*18)/18;
+ // Long ring fragments at slightly different inclinations, in the style of a spell seal.
+ ringPixels(ctx,cx,cy,32,25,phase,phase+2.52,mid,1,.5);
+ ringPixels(ctx,cx,cy,31,25,phase+Math.PI,phase+Math.PI+1.84,bright,1,.67);
+ ringPixels(ctx,cx,cy,38,12,-phase*.85+.2,-phase*.85+3.13,mid,1,.55);
+ ringPixels(ctx,cx,cy,38,12,-phase*.85+Math.PI+1,-phase*.85+Math.PI+2.9,bright,1,.5);
+ // Dotted nested ring has deliberate gaps so it feels etched, not vector smooth.
+ for(let i=0;i<44;i++){
+  if(i%9===0||i%9===1)continue;
+  const a=i*TAU/44-phase*.35;let r=22+Math.sin(i*3.1+t*1.1)*.5;
+  shinePixel(ctx,cx+Math.cos(a)*r,cy+Math.sin(a)*r*.9,i%4===0?bright:mid,1);
+ }
+ // Orbiting luminous runic marks and micro-debris. 1px marks stay crisp over the halo.
+ for(let i=0;i<22;i++){
+  const a=(i*.618033+ .37)*TAU+t*(i%2?-.19:.16);
+  const r=20+(i%4)*7+Math.sin(t*.7+i)*3;
+  const x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r*.7;
+  const shimmer=(Math.sin(t*3.2+i*1.83)+1)/2;
+  ctx.globalAlpha=.27+shimmer*.69;
+  shinePixel(ctx,x,y,i%5===0?hot:i%3===0?mid:bright,i%10===0?2:1);
+ }
+ ctx.globalAlpha=1;
+ // Floating squares with little reflective highlights.
+ for(let k=0;k<7;k++){
+  const life=(t*(.7+(k%3)*.2)+rnd(k*17+order.indexOf(id))*4)%4;
+  const x=cx+(rnd(k*34+order.indexOf(id)*2)-.5)*39+Math.sin(t*1.4+k)*3;
+  const y=72-life*14;
+  ctx.globalAlpha=(1-life/4)*.78;shinePixel(ctx,x,y,k%2?mid:bright,k%4===0?2:1)
+ }
+ ctx.globalAlpha=1;
+ // Bright short rune ticks at four directional anchors.
+ const g=Math.floor(t*7)%4;
+ for(let k=0;k<4;k++){const a=k*Math.PI/2+Math.PI/4;const x=cx+Math.cos(a)*34,y=cy+Math.sin(a)*27;ctx.globalAlpha=k===g?.95:.3;shinePixel(ctx,x,y,hot,2);shinePixel(ctx,x-3,y+2,mid,1)}
+ ctx.globalAlpha=1;
+}
+function renderPremium(id,t){
+ let record=spriteCache.get(id);
+ if(!record){const base=document.createElement('canvas'),sprite=document.createElement('canvas');base.width=base.height=72;sprite.width=sprite.height=96;record={base,bc:base.getContext('2d'),sprite,sc:sprite.getContext('2d')};spriteCache.set(id,record)}
+ const {base,bc,sprite,sc}=record;drawArt(bc,id,t);sc.clearRect(0,0,96,96);
+ sc.save();sc.globalCompositeOperation='screen';sc.globalAlpha=.4;sc.filter='blur(8px)';sc.drawImage(base,0,0,96,96);sc.restore();
+ sc.save();sc.globalCompositeOperation='screen';sc.globalAlpha=.44;sc.filter='blur(3px)';sc.drawImage(base,0,0,96,96);sc.restore();
+ sc.imageSmoothingEnabled=false;sc.drawImage(base,0,0,96,96);
+ // A stronger inner core and overlapping particles give starter effects extra depth.
+ const light=ELEMENT_HUES[id]||[byId[id].color,'#be8cff','#f9deff'];
+ if(id==='fire'||id==='lava'){
+  for(let i=0;i<11;i++){const z=(t*(11+i%4*2.7)+rnd(i*15)*36)%44;const x=48+(rnd(i*18)-.5)*25+Math.sin(z*.13+t+i)*3,y=76-z;
+   sc.globalAlpha=(1-z/45)*.8;shinePixel(sc,x,y,i%3?light[0]:light[2],i%4===0?2:1)}sc.globalAlpha=1;
+  ringPixels(sc,48,73,17,4,0,TAU,light[0],1,.6);
+ }else if(id==='water'||id==='rain'||id==='lake'||id==='wave'){
+  for(let i=0;i<4;i++){const y=60+i*3+Math.sin(t*2+i)*2;ringPixels(sc,48,y,15+i*3,4+i*.7,.1+t*.22,2.7+t*.22,light[0],1,.56)}
+ }else if(id==='earth'||id==='stone'||id==='mountain'){
+  for(let i=0;i<10;i++){const x=26+rnd(i*27)*42,y=47+rnd(i*16)*19+Math.sin(t*.75+i)*1.5;sc.globalAlpha=.3+rnd(i*4)*.4;shinePixel(sc,x,y,i%3===0?'#fff1ca':light[0],i%4===0?2:1)}sc.globalAlpha=1;
+ }else if(id==='wind'||id==='steam'||id==='fog'){
+  for(let i=0;i<3;i++){const a=(t*.25+i*2.1)%TAU;ringPixels(sc,48,49+i*2,20+i*6,9+i*3,a,a+2.8,light[i%2],1,.62)}
+ }
+ premiumAura(sc,id,t);
+ return sprite;
+}
+function drawRitual(t){
+ const canvas=$('#ritual-stage'),area=canvas.parentElement;const w=Math.max(1,Math.round(area.clientWidth*.7)),h=Math.max(1,Math.round(area.clientHeight*.7));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h}
+ const c=canvas.getContext('2d');c.clearRect(0,0,w,h);const x=w*.5,y=h*.46,R=Math.min(w*.115,h*.3);
+ // The table sigil is always alive, with runes that become brighter when elements fuse.
+ const active=mergePulse?1:.33;
+ c.save();c.globalCompositeOperation='lighter';ringPixels(c,x,y,R,R*.47,t*.14,t*.14+4.6,'#aa62e3',1,.35*active);ringPixels(c,x,y,R*.79,R*.36,-t*.19,-t*.19+4.2,'#eac0ff',1,.42*active);
+ for(let i=0;i<12;i++){let a=i*TAU/12+t*.09;let xx=x+Math.cos(a)*R, yy=y+Math.sin(a)*R*.47;c.globalAlpha=(i%3===0?.65:.25)*active;c.fillStyle=i%2?'#c896eb':'#e8b8ff';c.fillRect(Math.round(xx),Math.round(yy),i%3===0?3:1,i%3===0?3:1)}c.globalAlpha=1;
+ if(mergePulse){let age=(performance.now()-mergePulse.start)/1000,hit=(age-.69);
+   if(hit>=-.1){const flash=Math.max(0,1-Math.abs(hit)*2.2);c.globalAlpha=flash*.7;const grad=c.createRadialGradient(x,y,1,x,y,R*1.8);grad.addColorStop(0,mergePulse.result?'#f7d7ff':'#ff5d94');grad.addColorStop(.25,mergePulse.result?'#b465fa':'#a33566');grad.addColorStop(1,'#00000000');c.fillStyle=grad;c.fillRect(x-R*1.8,y-R*1.8,R*3.6,R*3.6);c.globalAlpha=1;
+    for(let i=0;i<55;i++){const a=rnd(i*13)*TAU,rad=Math.max(0,hit)*Math.min(w,h)*(0.25+rnd(i*4)*.65),xx=x+Math.cos(a)*rad, yy=y+Math.sin(a)*rad*.7;const p=Math.max(0,1-hit*.95);c.globalAlpha=p;c.fillStyle=i%5===0?'#fff5d7':mergePulse.result?'#dba3ff':'#ff678f';let z=i%6===0?3:1;c.fillRect(xx,yy,z,z)}c.globalAlpha=1;
+   }
+ }
+ c.restore();
+}
+function ambient(t){const canvas=$('#burst'),parent=canvas.parentElement;const w=parent.clientWidth,h=parent.clientHeight;if(!w||!h)return;const ratio=Math.min(1,window.devicePixelRatio||1);const wid=Math.round(w*.7),hei=Math.round(h*.7);if(canvas.width!==wid||canvas.height!==hei){canvas.width=wid;canvas.height=hei;}const c=canvas.getContext('2d');c.clearRect(0,0,wid,hei);const cx=wid*.5,cy=hei*.49;for(let i=0;i<25;i++){const phase=rnd(i*5)*TAU,x=cx+Math.sin(t*.25+i)*wid*.35,y=cy+Math.cos(t*.24+i*2)*hei*.36;c.globalAlpha=.13+.11*Math.sin(t*2+phase);c.fillStyle='#82aaaf';c.fillRect(x,y,1.5,1.5)}c.globalAlpha=1;
+let age=(performance.now()-burstAt)/1000;if(age<1.2){const col=burstColor;for(let i=0;i<70;i++){const a=rnd(i*7)*TAU,sp=.1+rnd(i*4)*.9,dist=Math.min(1,age*1.7)*sp*Math.min(wid,hei)*.52;const x=cx+Math.cos(a)*dist,y=cy+Math.sin(a)*dist;c.globalAlpha=Math.max(0,1-age/1.2)*(0.3+rnd(i)*.7);c.fillStyle=i%4?col:'#fff6cf';let s=1+rnd(i*13)*3;c.fillRect(x,y,s,s)}c.globalAlpha=1}}
+let frame=0;function loop(now){if(now-frame<42){requestAnimationFrame(loop);return}frame=now;const t=now/1000;const visible=$$('canvas[data-element]').filter(cv=>cv.offsetParent!==null&&(()=>{const r=cv.getBoundingClientRect();return r.bottom>=0&&r.top<=innerHeight+140})());const rendered=new Map();visible.forEach(cv=>{const id=cv.dataset.element;if(!rendered.has(id))rendered.set(id,renderPremium(id,t))});visible.forEach(cv=>{if(cv.offsetParent===null)return;const c=cv.getContext('2d');c.imageSmoothingEnabled=false;c.clearRect(0,0,cv.width,cv.height);c.drawImage(rendered.get(cv.dataset.element),0,0,cv.width,cv.height)});ambient(t);drawRitual(t);requestAnimationFrame(loop)}
+
+// Little Alchemy v1 public recipe table (alancnet/little-alchemy): 540 elements / 890 recipes.
+// Parse its JSON literal, never execute external code. The GitHub copy loads in online deployments.
+const ADVANCED_KEYS=new Set();
+function buildAdvanced(){
+ for(const row of ADVANCED_DATA){const id='adv-'+canonical(row.name);advancedIds.add(id);
+   if(!byId[id]){const c=['#e9b7f8','#a6e4f6','#ffd2a1','#b1eecc'][advancedIds.size%4];byId[id]={id,name:row.name,type:'ADVANCED',color:c};items.push([id,row.name,'ADVANCED',c]);order.push(id)}
+   const keys=row.inputs.map(v=>{const t=v.toLowerCase();return t==='air'||t==='wind'?'wind':advancedIds.has('adv-'+canonical(t))?'adv-'+canonical(t):sourceId(t)});
+   advancedRecipes.set(keys.sort().join('+'),id);
+ }
+ // Resolve forward references among advanced blueprints, irrespective of declaration order.
+ advancedRecipes.clear();
+ for(const row of ADVANCED_DATA){const id='adv-'+canonical(row.name),keys=row.inputs.map(v=>{const t=v.toLowerCase();return t==='air'||t==='wind'?'wind':advancedIds.has('adv-'+canonical(t))?'adv-'+canonical(t):sourceId(t)});advancedRecipes.set(keys.sort().join('+'),id)}
+}
+async function importClassicRecipes(){
+ const status=$('#catalog-total');status.title='Loading classic Little Alchemy recipes from GitHub';
+ try{
+  const response=await fetch('https://raw.githubusercontent.com/alancnet/little-alchemy/master/recipes.js',{cache:'force-cache'});
+  if(!response.ok)throw Error('Source unavailable: '+response.status);
+  const raw=await response.text(),beg=raw.indexOf('=',raw.indexOf('export var data'))+1,end=raw.indexOf('.map(',beg);
+  if(beg<1||end<0)throw Error('Unexpected source structure');
+  const [names,records]=JSON.parse(raw.slice(beg,end).trim())[0];
+  if(names.length!==540)throw Error('Unexpected element count');
+  for(const name of names){const id=sourceId(name);if(!byId[id]){const shade=['#a8d7e9','#eed29c','#c9a5ea','#b9e0ba','#f6b4ac'][names.indexOf(name)%5];byId[id]={id,name:name==='wind'?'Gale':name==='air'?'Wind':name.replace(/\b\w/g,m=>m.toUpperCase()),type:'CLASSIC',color:shade};items.push([id,byId[id].name,'CLASSIC',shade]);order.push(id)}}
+  for(const [idx,recipeList] of records){for(const [i,j] of recipeList){const a=sourceId(names[i]),b=sourceId(names[j]),result=sourceId(names[idx]);const k=key(a,b);if(!recipes.has(k))recipes.set(k,result);else{const previous=recipes.get(k);const all=Array.isArray(previous)?previous:[previous];if(!all.includes(result))recipes.set(k,[...all,result])}}}
+  status.title=`${names.length} classic elements and ${[...records].reduce((n,r)=>n+r[1].length,0)} classic formulas imported`;render();
+ }catch(e){console.warn('Offline starter recipe set in use:',e.message);status.title='Offline fallback: classic recipes require an internet connection';}
+}
+buildAdvanced();importClassicRecipes();
+render();requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

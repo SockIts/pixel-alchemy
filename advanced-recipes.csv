@@ -1,0 +1,212 @@
+Advanced element,Ingredient 1,Ingredient 2,Ingredient 3
+Battery,electricity,metal,energy
+Telephone,sound,wire,electricity
+Factory,house,metal,tool
+Camera,glass,light,tool
+Antenna,metal,wire,sky
+Plastic,oil,fire,pressure
+Magnet,metal,electricity,stone
+Sensor,electricity,light,wire
+Coffee,plant,water,fire
+Filter,sand,glass,water
+Hydrogen,water,electricity,air
+Road,stone,sand,city
+Thermometer,glass,mercury,heat
+Asteroid,space,stone,planet
+Portal,space,energy,light
+Seed,plant,earth,life
+DNA,life,human,microscope
+Heart,human,life,blood
+Medicine,doctor,plant,science
+Food,plant,meat,water
+Package,paper,box,rope
+Force Field,energy,light,glass
+Plasma,fire,electricity,gas
+Magic,energy,wizard,light
+Game,human,fun,idea
+Art,human,paint,idea
+Museum,art,house,history
+Guitar,wood,music,wire
+Microphone,sound,metal,electricity
+Film,light,paper,camera
+Balloon,air,fabric,pressure
+Ledger,paper,money,book
+Law,human,paper,city
+Market,money,city,human
+Eye,human,light,life
+Sleep,night,human,time
+Brain,human,idea,life
+Mercury,metal,water,pressure
+Heat,fire,energy,air
+Science,idea,human,book
+Box,wood,paper,tool
+Gas,air,fire,pressure
+Fun,human,music,love
+History,time,book,human
+Computer,CPU,electricity,Monitor Screen
+Gaming PC,computer,electricity,metal
+Laptop,computer,battery,glass
+Tablet,computer,glass,light
+Smartphone,computer,telephone,glass
+Smartwatch,watch,computer,electricity
+Server Rack,computer,metal,wire
+Data Center,computer,house,electricity
+Cloud Server,computer,cloud,electricity
+Supercomputer,computer,computer,electricity
+Quantum Computer,computer,energy,crystal ball
+Artificial Intelligence,computer,human,idea
+Neural Network,computer,brain,electricity
+Robot Assistant,robot,computer,human
+Industrial Robot,robot,metal,factory
+Humanoid Robot,robot,human,electricity
+Drone Camera,drone,camera,electricity
+Security Camera,camera,electricity,glass
+Smart Home,house,computer,sensor
+Smart City,city,computer,electricity
+Internet Router,internet,wire,electricity
+Wi-Fi Tower,internet,antenna,electricity
+Satellite,space,metal,computer
+GPS Navigator,satellite,map,computer
+Hologram,light,computer,optical fiber
+Virtual Reality,computer,glasses,light
+Augmented Reality,glasses,computer,camera
+3D Printer,printer,plastic,computer
+Laser Cutter,light,metal,tool
+Microchip,electricity,metal,sand
+CPU,microchip,electricity,computer
+Graphics Card,microchip,light,computer
+Monitor Screen,glass,light,electricity
+Circuit Board,wire,metal,electricity
+Battery Pack,electricity,metal,acid rain
+Power Bank,battery pack,computer,wire
+Solar Charger,solar cell,battery pack,sun
+Electric Scooter,electricity,wheel,metal
+Electric Bicycle,bicycle,battery pack,electricity
+Electric Train,train,electricity,metal
+Maglev Train,train,magnet,electricity
+Self-driving Car,car,computer,sensor
+Electric Truck,car,metal,battery pack
+Robot Vacuum,roomba,computer,electricity
+Smart Refrigerator,fridge,computer,electricity
+Smart Oven,fire,computer,metal
+Coffee Machine,water,electricity,coffee
+Water Purifier,water,filter,electricity
+Air Purifier,wind,filter,electricity
+Air Conditioner,cold,wind,electricity
+Industrial Generator,electricity,steam engine,metal
+Wind Farm,wind turbine,electricity,field
+Solar Farm,solar cell,sun,field
+Hydroelectric Dam,dam,water,electricity
+Geothermal Plant,geyser,steam,electricity
+Nuclear Reactor,atomic bomb,metal,water
+Fusion Reactor,sun,hydrogen,electricity
+Energy Grid,electricity,city,wire
+Charging Station,electricity,road,battery pack
+Smart Grid,energy grid,computer,electricity
+Weather Station,storm,computer,antenna
+Climate Sensor,weather station,thermometer,computer
+Space Telescope,telescope,space,computer
+Mars Rover,robot,mars,wheel
+Space Probe,spaceship,computer,satellite
+Orbital Station,space station,solar cell,robot
+Moon Base,moon,house,space station
+Lunar Rover,moon,car,computer
+Asteroid Miner,asteroid,robot,metal
+Starship,spaceship,engineer,metal
+Warp Drive,space,energy,engine
+Teleportation Gate,portal,energy,computer
+Time Machine,time,clock,electricity
+Cryogenic Chamber,ice,human,metal
+Terraforming Machine,planet,plant,computer
+Biosphere Dome,plant,glass,house
+Vertical Farm,farm,skyscraper,water
+Hydroponic Garden,plant,water,electricity
+Aquaponics System,fish,plant,water
+Automated Greenhouse,greenhouse,robot,water
+Seed Bank,seed,ice,bank
+Gene Sequencer,DNA,computer,electricity
+Bioreactor,bacteria,metal,electricity
+Synthetic Organ,heart,robot,life
+Prosthetic Arm,robot,human,metal
+Exoskeleton,armor,robot,electricity
+Medical Scanner,doctor,computer,light
+MRI Machine,hospital,electricity,magnet
+Nanobot,robot,metal,bacteria
+Nanofactory,nanobot,factory,computer
+Cure Machine,medicine,electricity,doctor
+Food Printer,3d printer,food,water
+Automatic Bakery,bakery,robot,electricity
+Drone Delivery,drone,package,city
+Autonomous Ship,boat,computer,electricity
+Submarine,boat,metal,pressure
+Deep Sea Lab,ocean,house,computer
+Ocean Cleanup Drone,ocean,robot,plastic
+Desalination Plant,sea,fire,metal
+Underwater City,city,ocean,glass
+Floating City,city,boat,metal
+Sky City,city,cloud,metal
+Space Elevator,space,metal,rope
+Orbital Ring,space,ring,metal
+Meteor Shield,force field,planet,metal
+Defense Drone,drone,robot,metal
+Energy Shield,energy,glass,armor
+Plasma Cannon,plasma,metal,electricity
+Photon Blade,light,sword,electricity
+Lightning Staff,wand,electricity,metal
+Arcane Reactor,magic,electricity,metal
+Mana Battery,magic,energy,crystal ball
+Spellbook,book,magic,paper
+Enchanted Armor,armor,magic,metal
+Flying Carpet,fabric,magic,wind
+Portal Engine,magic,space,computer
+Crystal Forge,crystal ball,fire,metal
+Elemental Golem,golem,energy,stone
+Clockwork Golem,golem,clock,metal
+Storm Engine,storm,electricity,metal
+Volcano Drill,volcano,tool,metal
+Lava Turbine,lava,metal,wheel
+Earthquake Detector,earthquake,computer,sensor
+Tsunami Warning System,tsunami,weather station,computer
+Volcanic Observatory,volcano,telescope,computer
+Aurora Generator,aurora,electricity,glass
+Light Sculpture,light,glass,statue
+Digital Art,computer,paint,light
+Pixel Studio,computer,paint,electricity
+Animation Studio,computer,art,time
+Game Console,computer,game,electricity
+Arcade Machine,game console,light,metal
+VR Arcade,virtual reality,game console,city
+Digital Museum,museum,computer,glass
+Interactive Map,map,computer,light
+AI Companion,artificial intelligence,robot assistant,love
+Robot Orchestra,robot,music,electricity
+Synthesizer,music,electricity,computer
+Electric Guitar,guitar,electricity,metal
+Music Streaming,internet,music,computer
+Podcast Studio,microphone,computer,sound
+Movie Projector,light,film,electricity
+Cinema Dome,glass,movie projector,house
+Electric Airship,balloon,electricity,metal
+Weather Balloon,air,balloon,sensor
+Flying Taxi,helicopter,computer,car
+Hyperloop,train,pressure,metal
+Smart Factory,factory,computer,robot
+Automated Warehouse,house,robot,computer
+Factory Drone,drone,factory,computer
+Laser Printer,printer,light,electricity
+Digital Currency,money,internet,computer
+Crypto Wallet,money,computer,electricity
+Blockchain Node,computer,internet,ledger
+Mining Rig,computer,electricity,diamond
+Smart Contract,computer,law,internet
+Digital Marketplace,market,internet,computer
+Cybernetic Eye,eye,robot,camera
+Neural Interface,brain,microchip,electricity
+Mind Reader,neural interface,sound,computer
+Dream Recorder,sleep,computer,camera
+Memory Archive,brain,computer,book
+Digital Twin,computer,human,mirror
+Virtual World,computer,planet,light
+Simulation Engine,computer,time,planet
+Reality Editor,simulation engine,magic,computer
+Infinity Engine,time,space,energy
